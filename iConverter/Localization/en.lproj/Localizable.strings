@@ -11,3 +11,9 @@
 "errorTitle" = "Error";
 "noInternetMessage" = "No Internet Connection";
 "errorMessage" = "Something went wrong";
+
+// MARK: - Success
+"successTitle" = "Success";
+
+// MARK: - App Name
+"appName" = "iConverter";

@@ -6,15 +6,29 @@
 //
 
 import UIKit
+import Swinject
+import SwinjectAutoregistration
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
+    
+    private var parentAssembler = Assembler([
+        ServiceAssembly(),
+        MainAssembly()
+    ])
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setUp()
         return true
+    }
+}
+
+private extension AppDelegate {
+    func setUp() {
+        guard let window = self.window else { return }
+        
+        window.rootViewController = parentAssembler.resolver ~> MainViewController.self
     }
 }
 

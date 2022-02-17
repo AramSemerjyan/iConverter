@@ -6,5 +6,9 @@
 //
 
 enum Endpoints {
-    
+    enum Converter {
+        static func convert(amount: String, from: Currency, to: Currency) -> String {
+            "currency/commercial/exchange/\(amount)-\(from.rawValue)/\(to.rawValue)/latest"
+        }
+    }
 }

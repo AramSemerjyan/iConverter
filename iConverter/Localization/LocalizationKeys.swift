@@ -9,4 +9,6 @@ enum LocalizationKeys: String {
     case errorTitle
     case noInternetMessage
     case errorMessage
+    case appName
+    case successTitle
 }

@@ -16,16 +16,22 @@
 		AE61933927BEFF3400719E44 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933827BEFF3400719E44 /* Currency.swift */; };
 		AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933B27BF015E00719E44 /* ConvertResponse.swift */; };
 		AE61933E27BF02B300719E44 /* ConverterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933D27BF02B300719E44 /* ConverterRequest.swift */; };
-		AE61934227BF040700719E44 /* ConverterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934127BF040700719E44 /* ConverterApi.swift */; };
+		AE61934227BF040700719E44 /* ConverterApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934127BF040700719E44 /* ConverterApiProtocol.swift */; };
 		AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934427BF04A300719E44 /* BaseApiService.swift */; };
 		AE61934827BF057200719E44 /* SingleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934727BF057200719E44 /* SingleState.swift */; };
 		AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934B27BF05A900719E44 /* iConverterDecoder.swift */; };
 		AE61934F27BF066700719E44 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934E27BF066700719E44 /* Endpoints.swift */; };
 		AE61935127BF076D00719E44 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935027BF076D00719E44 /* ServiceAssembly.swift */; };
 		AE61935327BF07C800719E44 /* iConverterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935227BF07C800719E44 /* iConverterEncoder.swift */; };
+		AE61935627BF0A3000719E44 /* AppConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935527BF0A3000719E44 /* AppConfigs.swift */; };
+		AE61935827BF0DDA00719E44 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935727BF0DDA00719E44 /* MainViewModel.swift */; };
+		AE61935B27BF0E2000719E44 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935A27BF0E2000719E44 /* BaseViewModel.swift */; };
+		AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935C27BF0EBF00719E44 /* MainAssembly.swift */; };
+		AE61936127BF0F9D00719E44 /* ViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */; };
+		AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936327BF10C100719E44 /* NSObject+Extension.swift */; };
 		AECEC18F27BBDB99002EB9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */; };
 		AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC19227BBDB99002EB9CE /* MainViewController.swift */; };
-		AECEC19627BBDB99002EB9CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19427BBDB99002EB9CE /* Main.storyboard */; };
+		AECEC19627BBDB99002EB9CE /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */; };
 		AECEC19827BBDBA0002EB9CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19727BBDBA0002EB9CE /* Assets.xcassets */; };
 		AECEC19B27BBDBA0002EB9CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19927BBDBA0002EB9CE /* LaunchScreen.storyboard */; };
 		AECEC1A627BBDBA1002EB9CE /* iConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1A527BBDBA1002EB9CE /* iConverterTests.swift */; };
@@ -66,17 +72,23 @@
 		AE61933827BEFF3400719E44 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		AE61933B27BF015E00719E44 /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		AE61933D27BF02B300719E44 /* ConverterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRequest.swift; sourceTree = "<group>"; };
-		AE61934127BF040700719E44 /* ConverterApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterApi.swift; sourceTree = "<group>"; };
+		AE61934127BF040700719E44 /* ConverterApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterApiProtocol.swift; sourceTree = "<group>"; };
 		AE61934427BF04A300719E44 /* BaseApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
 		AE61934727BF057200719E44 /* SingleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleState.swift; sourceTree = "<group>"; };
 		AE61934B27BF05A900719E44 /* iConverterDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterDecoder.swift; sourceTree = "<group>"; };
 		AE61934E27BF066700719E44 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		AE61935027BF076D00719E44 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 		AE61935227BF07C800719E44 /* iConverterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterEncoder.swift; sourceTree = "<group>"; };
+		AE61935527BF0A3000719E44 /* AppConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigs.swift; sourceTree = "<group>"; };
+		AE61935727BF0DDA00719E44 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		AE61935A27BF0E2000719E44 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		AE61935C27BF0EBF00719E44 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
+		AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Storyboard.swift"; sourceTree = "<group>"; };
+		AE61936327BF10C100719E44 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		AECEC18B27BBDB99002EB9CE /* iConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AECEC19227BBDB99002EB9CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		AECEC19527BBDB99002EB9CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AECEC19527BBDB99002EB9CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
 		AECEC19727BBDBA0002EB9CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AECEC19A27BBDBA0002EB9CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AECEC19C27BBDBA0002EB9CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				AE61935027BF076D00719E44 /* ServiceAssembly.swift */,
+				AE61935C27BF0EBF00719E44 /* MainAssembly.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -166,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				AE61932827BEEF6C00719E44 /* BaseViewController.swift */,
+				AE61935A27BF0E2000719E44 /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -173,7 +187,9 @@
 		AE61932B27BEEF7B00719E44 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */,
 				AECEC19227BBDB99002EB9CE /* MainViewController.swift */,
+				AE61935727BF0DDA00719E44 /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -218,7 +234,7 @@
 		AE61934027BF03ED00719E44 /* ConverterApi */ = {
 			isa = PBXGroup;
 			children = (
-				AE61934127BF040700719E44 /* ConverterApi.swift */,
+				AE61934127BF040700719E44 /* ConverterApiProtocol.swift */,
 			);
 			path = ConverterApi;
 			sourceTree = "<group>";
@@ -242,6 +258,7 @@
 		AE61934927BF059500719E44 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AE61935E27BF0F6200719E44 /* Extension */,
 				AE61934A27BF059C00719E44 /* Coders */,
 			);
 			path = Utils;
@@ -262,6 +279,39 @@
 				AE61934E27BF066700719E44 /* Endpoints.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		AE61935427BF0A1300719E44 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				AE61935527BF0A3000719E44 /* AppConfigs.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		AE61935E27BF0F6200719E44 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AE61936227BF10A200719E44 /* NSObject */,
+				AE61935F27BF0F6A00719E44 /* ViewController */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		AE61935F27BF0F6A00719E44 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AE61936227BF10A200719E44 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				AE61936327BF10C100719E44 /* NSObject+Extension.swift */,
+			);
+			path = NSObject;
 			sourceTree = "<group>";
 		};
 		AECEC18227BBDB99002EB9CE = {
@@ -289,6 +339,7 @@
 		AECEC18D27BBDB99002EB9CE /* iConverter */ = {
 			isa = PBXGroup;
 			children = (
+				AE61935427BF0A1300719E44 /* Configs */,
 				AE61934927BF059500719E44 /* Utils */,
 				AE61932C27BEF64000719E44 /* Localization */,
 				AE61932727BEEDCC00719E44 /* DI */,
@@ -296,7 +347,6 @@
 				AE61932427BEEDB300719E44 /* Pages */,
 				AE61932327BEEDAA00719E44 /* Services */,
 				AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */,
-				AECEC19427BBDB99002EB9CE /* Main.storyboard */,
 				AECEC19727BBDBA0002EB9CE /* Assets.xcassets */,
 				AECEC19927BBDBA0002EB9CE /* LaunchScreen.storyboard */,
 				AECEC19C27BBDBA0002EB9CE /* Info.plist */,
@@ -446,7 +496,7 @@
 				AECEC19B27BBDBA0002EB9CE /* LaunchScreen.storyboard in Resources */,
 				AE61932F27BEF68B00719E44 /* Localizable.strings in Resources */,
 				AECEC19827BBDBA0002EB9CE /* Assets.xcassets in Resources */,
-				AECEC19627BBDB99002EB9CE /* Main.storyboard in Resources */,
+				AECEC19627BBDB99002EB9CE /* MainViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,20 +625,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE61935327BF07C800719E44 /* iConverterEncoder.swift in Sources */,
-				AE61934227BF040700719E44 /* ConverterApi.swift in Sources */,
+				AE61934227BF040700719E44 /* ConverterApiProtocol.swift in Sources */,
 				AE61933927BEFF3400719E44 /* Currency.swift in Sources */,
 				AE61934F27BF066700719E44 /* Endpoints.swift in Sources */,
 				AE61935127BF076D00719E44 /* ServiceAssembly.swift in Sources */,
+				AE61935B27BF0E2000719E44 /* BaseViewModel.swift in Sources */,
+				AE61935627BF0A3000719E44 /* AppConfigs.swift in Sources */,
 				AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */,
+				AE61935827BF0DDA00719E44 /* MainViewModel.swift in Sources */,
 				AE61933E27BF02B300719E44 /* ConverterRequest.swift in Sources */,
 				AE61933527BEF84600719E44 /* LocalizationKeys.swift in Sources */,
 				AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */,
 				AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */,
 				AE61934827BF057200719E44 /* SingleState.swift in Sources */,
+				AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */,
 				AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */,
 				AE61932927BEEF6C00719E44 /* BaseViewController.swift in Sources */,
+				AE61936127BF0F9D00719E44 /* ViewController+Storyboard.swift in Sources */,
 				AECEC18F27BBDB99002EB9CE /* AppDelegate.swift in Sources */,
 				AE61933327BEF7ED00719E44 /* iConverterLocalization.swift in Sources */,
+				AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,12 +689,12 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		AECEC19427BBDB99002EB9CE /* Main.storyboard */ = {
+		AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AECEC19527BBDB99002EB9CE /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		AECEC19927BBDBA0002EB9CE /* LaunchScreen.storyboard */ = {
@@ -780,7 +836,7 @@
 				INFOPLIST_FILE = iConverter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -808,7 +864,7 @@
 				INFOPLIST_FILE = iConverter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
