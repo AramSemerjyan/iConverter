@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  iConverter
+
+  Created by Aram Semerjyan on 2/18/22.
+  
+*/
+
+// MARK: - Error
+
+"errorTitle" = "Error";
+"noInternetMessage" = "No Internet Connection";
+"errorMessage" = "Something went wrong";
