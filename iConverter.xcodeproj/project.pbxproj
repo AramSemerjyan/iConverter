@@ -16,7 +16,7 @@
 		AE61933927BEFF3400719E44 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933827BEFF3400719E44 /* Currency.swift */; };
 		AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933B27BF015E00719E44 /* ConvertResponse.swift */; };
 		AE61933E27BF02B300719E44 /* ConverterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933D27BF02B300719E44 /* ConverterRequest.swift */; };
-		AE61934227BF040700719E44 /* ConverterApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934127BF040700719E44 /* ConverterApiProtocol.swift */; };
+		AE61934227BF040700719E44 /* ConverterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934127BF040700719E44 /* ConverterApi.swift */; };
 		AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934427BF04A300719E44 /* BaseApiService.swift */; };
 		AE61934827BF057200719E44 /* SingleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934727BF057200719E44 /* SingleState.swift */; };
 		AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934B27BF05A900719E44 /* iConverterDecoder.swift */; };
@@ -29,6 +29,19 @@
 		AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935C27BF0EBF00719E44 /* MainAssembly.swift */; };
 		AE61936127BF0F9D00719E44 /* ViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */; };
 		AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936327BF10C100719E44 /* NSObject+Extension.swift */; };
+		AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04CD27C037C400A16D51 /* ConverterService.swift */; };
+		AE8B04D127C0F8CF00A16D51 /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */; };
+		AE8B04D327C103B400A16D51 /* FeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D227C103B400A16D51 /* FeeService.swift */; };
+		AE8B04D627C1076000A16D51 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D527C1076000A16D51 /* BalanceService.swift */; };
+		AE8B04D927C107A300A16D51 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D827C107A300A16D51 /* Balance.swift */; };
+		AE8B04DB27C10A1A00A16D51 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE8B04DA27C10A1A00A16D51 /* Colors.xcassets */; };
+		AE8B04DE27C10B3300A16D51 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04DD27C10B3300A16D51 /* UIColor+Extension.swift */; };
+		AE8B04E127C10C8000A16D51 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04E027C10C8000A16D51 /* Double+Extension.swift */; };
+		AE8B04E327C1111800A16D51 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04E227C1111800A16D51 /* LocalDB.swift */; };
+		AE8B04E727C11D5500A16D51 /* BalancesContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8B04E627C11D5500A16D51 /* BalancesContainer.xib */; };
+		AE8B04E927C11D6100A16D51 /* BalancesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04E827C11D6100A16D51 /* BalancesContainer.swift */; };
+		AE8B04EC27C11DE300A16D51 /* BalanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04EB27C11DE300A16D51 /* BalanceItem.swift */; };
+		AE8B04EE27C11DEE00A16D51 /* BalanceItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8B04ED27C11DEE00A16D51 /* BalanceItem.xib */; };
 		AECEC18F27BBDB99002EB9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */; };
 		AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC19227BBDB99002EB9CE /* MainViewController.swift */; };
 		AECEC19627BBDB99002EB9CE /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */; };
@@ -72,7 +85,7 @@
 		AE61933827BEFF3400719E44 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		AE61933B27BF015E00719E44 /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		AE61933D27BF02B300719E44 /* ConverterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRequest.swift; sourceTree = "<group>"; };
-		AE61934127BF040700719E44 /* ConverterApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterApiProtocol.swift; sourceTree = "<group>"; };
+		AE61934127BF040700719E44 /* ConverterApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterApi.swift; sourceTree = "<group>"; };
 		AE61934427BF04A300719E44 /* BaseApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
 		AE61934727BF057200719E44 /* SingleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleState.swift; sourceTree = "<group>"; };
 		AE61934B27BF05A900719E44 /* iConverterDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterDecoder.swift; sourceTree = "<group>"; };
@@ -85,6 +98,19 @@
 		AE61935C27BF0EBF00719E44 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		AE61936327BF10C100719E44 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		AE8B04CD27C037C400A16D51 /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
+		AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
+		AE8B04D227C103B400A16D51 /* FeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeService.swift; sourceTree = "<group>"; };
+		AE8B04D527C1076000A16D51 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
+		AE8B04D827C107A300A16D51 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
+		AE8B04DA27C10A1A00A16D51 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		AE8B04DD27C10B3300A16D51 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		AE8B04E027C10C8000A16D51 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		AE8B04E227C1111800A16D51 /* LocalDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDB.swift; sourceTree = "<group>"; };
+		AE8B04E627C11D5500A16D51 /* BalancesContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalancesContainer.xib; sourceTree = "<group>"; };
+		AE8B04E827C11D6100A16D51 /* BalancesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesContainer.swift; sourceTree = "<group>"; };
+		AE8B04EB27C11DE300A16D51 /* BalanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceItem.swift; sourceTree = "<group>"; };
+		AE8B04ED27C11DEE00A16D51 /* BalanceItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceItem.xib; sourceTree = "<group>"; };
 		AECEC18B27BBDB99002EB9CE /* iConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AECEC19227BBDB99002EB9CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +168,9 @@
 		AE61932327BEEDAA00719E44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B04D427C1073A00A16D51 /* BalanceService */,
+				AE8B04CF27C0F8BE00A16D51 /* DB */,
+				AE8B04CC27C037A900A16D51 /* Converter */,
 				AE61933627BEFB5D00719E44 /* Networking */,
 			);
 			path = Services;
@@ -159,6 +188,7 @@
 		AE61932527BEEDB900719E44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B04D727C1079900A16D51 /* Balance */,
 				AE61934627BF056600719E44 /* Base */,
 				AE61933A27BF00E200719E44 /* Convert */,
 				AE61933727BEFF1E00719E44 /* Currency */,
@@ -234,7 +264,7 @@
 		AE61934027BF03ED00719E44 /* ConverterApi */ = {
 			isa = PBXGroup;
 			children = (
-				AE61934127BF040700719E44 /* ConverterApiProtocol.swift */,
+				AE61934127BF040700719E44 /* ConverterApi.swift */,
 			);
 			path = ConverterApi;
 			sourceTree = "<group>";
@@ -292,6 +322,8 @@
 		AE61935E27BF0F6200719E44 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B04DF27C10C7400A16D51 /* Double */,
+				AE8B04DC27C10B2300A16D51 /* UIColor */,
 				AE61936227BF10A200719E44 /* NSObject */,
 				AE61935F27BF0F6A00719E44 /* ViewController */,
 			);
@@ -312,6 +344,83 @@
 				AE61936327BF10C100719E44 /* NSObject+Extension.swift */,
 			);
 			path = NSObject;
+			sourceTree = "<group>";
+		};
+		AE8B04CC27C037A900A16D51 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04CD27C037C400A16D51 /* ConverterService.swift */,
+				AE8B04D227C103B400A16D51 /* FeeService.swift */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		AE8B04CF27C0F8BE00A16D51 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */,
+				AE8B04E227C1111800A16D51 /* LocalDB.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		AE8B04D427C1073A00A16D51 /* BalanceService */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04D527C1076000A16D51 /* BalanceService.swift */,
+			);
+			path = BalanceService;
+			sourceTree = "<group>";
+		};
+		AE8B04D727C1079900A16D51 /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04D827C107A300A16D51 /* Balance.swift */,
+			);
+			path = Balance;
+			sourceTree = "<group>";
+		};
+		AE8B04DC27C10B2300A16D51 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04DD27C10B3300A16D51 /* UIColor+Extension.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		AE8B04DF27C10C7400A16D51 /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04E027C10C8000A16D51 /* Double+Extension.swift */,
+			);
+			path = Double;
+			sourceTree = "<group>";
+		};
+		AE8B04E427C11D3400A16D51 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04EA27C11DD200A16D51 /* BalanceItem */,
+				AE8B04E527C11D3900A16D51 /* BalancesContainer */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AE8B04E527C11D3900A16D51 /* BalancesContainer */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04E627C11D5500A16D51 /* BalancesContainer.xib */,
+				AE8B04E827C11D6100A16D51 /* BalancesContainer.swift */,
+			);
+			path = BalancesContainer;
+			sourceTree = "<group>";
+		};
+		AE8B04EA27C11DD200A16D51 /* BalanceItem */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04EB27C11DE300A16D51 /* BalanceItem.swift */,
+				AE8B04ED27C11DEE00A16D51 /* BalanceItem.xib */,
+			);
+			path = BalanceItem;
 			sourceTree = "<group>";
 		};
 		AECEC18227BBDB99002EB9CE = {
@@ -339,6 +448,7 @@
 		AECEC18D27BBDB99002EB9CE /* iConverter */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B04E427C11D3400A16D51 /* UI */,
 				AE61935427BF0A1300719E44 /* Configs */,
 				AE61934927BF059500719E44 /* Utils */,
 				AE61932C27BEF64000719E44 /* Localization */,
@@ -350,6 +460,7 @@
 				AECEC19727BBDBA0002EB9CE /* Assets.xcassets */,
 				AECEC19927BBDBA0002EB9CE /* LaunchScreen.storyboard */,
 				AECEC19C27BBDBA0002EB9CE /* Info.plist */,
+				AE8B04DA27C10A1A00A16D51 /* Colors.xcassets */,
 			);
 			path = iConverter;
 			sourceTree = "<group>";
@@ -493,6 +604,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8B04EE27C11DEE00A16D51 /* BalanceItem.xib in Resources */,
+				AE8B04E727C11D5500A16D51 /* BalancesContainer.xib in Resources */,
+				AE8B04DB27C10A1A00A16D51 /* Colors.xcassets in Resources */,
 				AECEC19B27BBDBA0002EB9CE /* LaunchScreen.storyboard in Resources */,
 				AE61932F27BEF68B00719E44 /* Localizable.strings in Resources */,
 				AECEC19827BBDBA0002EB9CE /* Assets.xcassets in Resources */,
@@ -625,23 +739,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE61935327BF07C800719E44 /* iConverterEncoder.swift in Sources */,
-				AE61934227BF040700719E44 /* ConverterApiProtocol.swift in Sources */,
+				AE61934227BF040700719E44 /* ConverterApi.swift in Sources */,
+				AE8B04D127C0F8CF00A16D51 /* BalanceDataStore.swift in Sources */,
+				AE8B04DE27C10B3300A16D51 /* UIColor+Extension.swift in Sources */,
+				AE8B04EC27C11DE300A16D51 /* BalanceItem.swift in Sources */,
+				AE8B04E927C11D6100A16D51 /* BalancesContainer.swift in Sources */,
 				AE61933927BEFF3400719E44 /* Currency.swift in Sources */,
 				AE61934F27BF066700719E44 /* Endpoints.swift in Sources */,
 				AE61935127BF076D00719E44 /* ServiceAssembly.swift in Sources */,
 				AE61935B27BF0E2000719E44 /* BaseViewModel.swift in Sources */,
+				AE8B04E327C1111800A16D51 /* LocalDB.swift in Sources */,
 				AE61935627BF0A3000719E44 /* AppConfigs.swift in Sources */,
 				AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */,
+				AE8B04D627C1076000A16D51 /* BalanceService.swift in Sources */,
+				AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */,
 				AE61935827BF0DDA00719E44 /* MainViewModel.swift in Sources */,
 				AE61933E27BF02B300719E44 /* ConverterRequest.swift in Sources */,
 				AE61933527BEF84600719E44 /* LocalizationKeys.swift in Sources */,
 				AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */,
+				AE8B04E127C10C8000A16D51 /* Double+Extension.swift in Sources */,
 				AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */,
 				AE61934827BF057200719E44 /* SingleState.swift in Sources */,
 				AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */,
+				AE8B04D927C107A300A16D51 /* Balance.swift in Sources */,
 				AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */,
 				AE61932927BEEF6C00719E44 /* BaseViewController.swift in Sources */,
 				AE61936127BF0F9D00719E44 /* ViewController+Storyboard.swift in Sources */,
+				AE8B04D327C103B400A16D51 /* FeeService.swift in Sources */,
 				AECEC18F27BBDB99002EB9CE /* AppDelegate.swift in Sources */,
 				AE61933327BEF7ED00719E44 /* iConverterLocalization.swift in Sources */,
 				AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */,

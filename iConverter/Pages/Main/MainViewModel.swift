@@ -10,32 +10,50 @@ import RxRelay
 
 final class MainViewModel: BaseViewModel {
     // MARK: - Services
-    let converterApi: ConverterApiProtocol
+    let converterSerivce: ConverterServiceProtocol
+    let balanceDataStore: BalanceDataStoreProtocol
     
     // MARK: - Output
     let onSuccess: PublishRelay<String> = .init()
+    let currentBalance: BehaviorRelay<String?> = .init(value: nil)
+    let otherBalances: BehaviorRelay<[Balance]> = .init(value: [])
     
-    init(converterApi: ConverterApiProtocol) {
-        self.converterApi = converterApi
+    init(
+        converterService: ConverterServiceProtocol,
+        balanceDataStore: BalanceDataStoreProtocol
+    ) {
+        self.converterSerivce = converterService
+        self.balanceDataStore = balanceDataStore
+        
         super.init()
         
+        initData()
         doBindings()
+    }
+}
+
+// MARK: - Init data
+extension MainViewModel {
+    func initData() {
+        let currentBalance = balanceDataStore.getCurrentBalance()
+        let otherBalances = balanceDataStore.getOtherBalances()
+        
+        self.currentBalance.accept(currentBalance?.nameWithSymbol)
+        self.otherBalances.accept(otherBalances)
     }
 }
 
 // MARK: - Do bindings
 extension MainViewModel {
     func doBindings() {
-        let state = converterApi
-            .convert(with: .mock())
-            .share()
+        converterSerivce.convert.accept(.mock())
         
-        state.compactMap(\.response)
-            .map { "You've converted \($0.amount) to \($0.currency)" }
+        converterSerivce
+            .onSuccess
             .bind(to: onSuccess)
             .disposed(by: disposeBag)
-        
-        state.compactMap(\.state)
+
+        converterSerivce.baseState
             .bind(to: baseState)
             .disposed(by: disposeBag)
     }

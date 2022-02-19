@@ -11,4 +11,5 @@ enum LocalizationKeys: String {
     case errorMessage
     case appName
     case successTitle
+    case currentBalance
 }

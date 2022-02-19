@@ -15,6 +15,9 @@ final class ServiceAssembly: Assembly {
         container.autoregister(Session.self, initializer: provideSession)
         container.autoregister(RxRestClient.self, initializer: provideRestClient)
         container.autoregister(ConverterApiProtocol.self, initializer: ConverterApiService.init)
+        container.autoregister(ConverterServiceProtocol.self, initializer: ConverterService.init)
+        container.autoregister(LocalDBProtocol.self, initializer: LocalDBService.init)
+        container.autoregister(BalanceDataStoreProtocol.self, initializer: BalanceDataStore.init)
     }
 }
 
@@ -39,7 +42,6 @@ private func provideSession() -> Session {
 }
 
 private final class Logger: EventMonitor {
-    // Event called when any type of Request is resumed.
     func requestDidResume(_ request: Request) {
         print(request.cURLDescription())
     }

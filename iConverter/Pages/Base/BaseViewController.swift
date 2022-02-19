@@ -23,6 +23,11 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         doBindings()
+        setUpViews()
+    }
+    
+    func setUpViews() {
+        self.view.backgroundColor = .appBackground
     }
 }
 

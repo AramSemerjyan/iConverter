@@ -17,3 +17,6 @@
 
 // MARK: - App Name
 "appName" = "iConverter";
+
+// MARK: - Balance
+"currentBalance" = "Current Balance";

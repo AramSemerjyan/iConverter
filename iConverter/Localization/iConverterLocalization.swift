@@ -33,4 +33,10 @@ final class iConverterLocalization {
         LocalizationKeys.appName.rawValue,
         comment: "App Name"
     )
+    
+    // MARK: - Balance
+    static let currentBalance = NSLocalizedString(
+        LocalizationKeys.currentBalance.rawValue,
+        comment: "Current Balance"
+    )
 }

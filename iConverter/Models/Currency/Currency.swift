@@ -5,7 +5,7 @@
 //  Created by Aram Semerjyan on 2/18/22.
 //
 
-enum Currency: String, Decodable {
+enum Currency: String, Decodable, CaseIterable {
     case usd = "USD"
     case eur = "EUR"
     case jpy = "JPY"
@@ -15,6 +15,14 @@ enum Currency: String, Decodable {
         case .usd: return "$";
         case .eur: return "€";
         case .jpy: return "¥";
+        }
+    }
+    
+    var fee: Double {
+        switch (self) {
+        case .usd: return 0.7;
+        case .eur: return 0.5;
+        case .jpy: return 0.8;
         }
     }
 }

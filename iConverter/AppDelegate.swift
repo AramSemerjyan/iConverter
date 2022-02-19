@@ -28,6 +28,9 @@ private extension AppDelegate {
     func setUp() {
         guard let window = self.window else { return }
         
+        let db = parentAssembler.resolver ~> LocalDBProtocol.self
+        db.initialSetUp()
+        
         window.rootViewController = parentAssembler.resolver ~> MainViewController.self
     }
 }
