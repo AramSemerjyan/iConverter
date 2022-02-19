@@ -17,7 +17,10 @@ final class ServiceAssembly: Assembly {
         container.autoregister(ConverterApiProtocol.self, initializer: ConverterApiService.init)
         container.autoregister(ConverterServiceProtocol.self, initializer: ConverterService.init)
         container.autoregister(LocalDBProtocol.self, initializer: LocalDBService.init)
-        container.autoregister(BalanceDataStoreProtocol.self, initializer: BalanceDataStore.init)
+        container.autoregister(ConverterValidatorProtocol.self, initializer: ConverterValidator.init)
+        container
+            .autoregister(BalanceDataStoreProtocol.self, initializer: BalanceDataStore.init)
+            .inObjectScope(.container)
     }
 }
 

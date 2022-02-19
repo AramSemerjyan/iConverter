@@ -22,6 +22,26 @@ final class iConverterLocalization {
         comment: "No Internet Connection"
     )
     
+    static let noEmptyFields = NSLocalizedString(
+        LocalizationKeys.noEmptyFields.rawValue,
+        comment: "No empty fields"
+    )
+    
+    static let noEmptyAmount = NSLocalizedString(
+        LocalizationKeys.noEmptyAmount.rawValue,
+        comment: "No empty amount"
+    )
+    
+    static let noEqualCurrency = NSLocalizedString(
+        LocalizationKeys.noEqualCurrency.rawValue,
+        comment: "No equal currency"
+    )
+    
+    static let noFounds = NSLocalizedString(
+        LocalizationKeys.noFounds.rawValue,
+        comment: "No founds"
+    )
+    
     // MARK: - Success
     static let successTitle = NSLocalizedString(
         LocalizationKeys.successTitle.rawValue,
@@ -38,5 +58,16 @@ final class iConverterLocalization {
     static let currentBalance = NSLocalizedString(
         LocalizationKeys.currentBalance.rawValue,
         comment: "Current Balance"
+    )
+    
+    // MARK: - Transaction
+    static let transactionTitle = NSLocalizedString(
+        LocalizationKeys.transactionTitle.rawValue,
+        comment: "Transaction Title"
+    )
+    
+    static let submitButtonTitle = NSLocalizedString(
+        LocalizationKeys.submitButtonTitle.rawValue,
+        comment: "Submit button title"
     )
 }

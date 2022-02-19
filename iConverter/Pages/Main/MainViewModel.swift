@@ -10,7 +10,6 @@ import RxRelay
 
 final class MainViewModel: BaseViewModel {
     // MARK: - Services
-    let converterSerivce: ConverterServiceProtocol
     let balanceDataStore: BalanceDataStoreProtocol
     
     // MARK: - Output
@@ -19,10 +18,8 @@ final class MainViewModel: BaseViewModel {
     let otherBalances: BehaviorRelay<[Balance]> = .init(value: [])
     
     init(
-        converterService: ConverterServiceProtocol,
         balanceDataStore: BalanceDataStoreProtocol
     ) {
-        self.converterSerivce = converterService
         self.balanceDataStore = balanceDataStore
         
         super.init()
@@ -46,15 +43,6 @@ extension MainViewModel {
 // MARK: - Do bindings
 extension MainViewModel {
     func doBindings() {
-        converterSerivce.convert.accept(.mock())
-        
-        converterSerivce
-            .onSuccess
-            .bind(to: onSuccess)
-            .disposed(by: disposeBag)
 
-        converterSerivce.baseState
-            .bind(to: baseState)
-            .disposed(by: disposeBag)
     }
 }

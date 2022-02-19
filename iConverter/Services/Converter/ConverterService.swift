@@ -17,7 +17,12 @@ protocol ConverterServiceProtocol {
 }
 
 final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
+    // MARK: - services
     let converterApi: ConverterApiProtocol
+    let balanceDataStore: BalanceDataStoreProtocol
+    
+    // MARK: - validator
+    let converterValidator: ConverterValidatorProtocol
     
     // MARK: - Inputs
     let convert: PublishRelay<ConvertRequest> = .init()
@@ -25,9 +30,16 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
     // MARK: - Outputs
     let baseState = PublishRelay<BaseState>()
     let onSuccess = PublishRelay<String>()
+    let onError = PublishRelay<String>()
     
-    init(converterApi: ConverterApiProtocol) {
+    init(
+        converterApi: ConverterApiProtocol,
+        balanceDataStore: BalanceDataStoreProtocol,
+        converterValidator: ConverterValidatorProtocol
+    ) {
         self.converterApi = converterApi
+        self.balanceDataStore = balanceDataStore
+        self.converterValidator = converterValidator
         
         doBindings()
     }

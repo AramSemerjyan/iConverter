@@ -13,7 +13,7 @@ import SwinjectAutoregistration
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    private var parentAssembler = Assembler([
+    var parentAssembler = Assembler([
         ServiceAssembly(),
         MainAssembly()
     ])

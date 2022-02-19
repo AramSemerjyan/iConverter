@@ -6,10 +6,25 @@
 //
 
 enum LocalizationKeys: String {
+    // MARK: - error
     case errorTitle
     case noInternetMessage
     case errorMessage
+    case noEmptyFields
+    case noEmptyAmount
+    case noEqualCurrency
+    case noFounds
+    
+    // MARK: - general app
     case appName
+    
+    // MARK: - success
     case successTitle
+    
+    // MARK: - balance
     case currentBalance
+    
+    // MARK: - transactions
+    case transactionTitle
+    case submitButtonTitle
 }

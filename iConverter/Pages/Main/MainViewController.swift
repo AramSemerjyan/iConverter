@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwinjectAutoregistration
 import RxSwift
 
 class MainViewController: BaseViewController {
@@ -28,6 +29,13 @@ class MainViewController: BaseViewController {
         super.setUpViews()
         
         setUpCurrentBalanceViews()
+    }
+    
+    @IBAction func addNewTransaction(_ sender: UIButton) {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let controller = delegate.parentAssembler.resolver ~> TransactionViewController.self
+        
+        self.present(controller, animated: true)
     }
 }
 

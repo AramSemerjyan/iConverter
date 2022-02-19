@@ -15,4 +15,20 @@ extension ConvertRequest {
     static func mock() -> ConvertRequest {
         .init(amount: "345.6", fromCurrency: .usd, toCurrency: .eur)
     }
+    
+    static func empty() -> ConvertRequest {
+        .init(amount: "", fromCurrency: .usd, toCurrency: .eur)
+    }
+    
+    func copy(
+        amount: String?,
+        fromCurrency: Currency?,
+        toCurrency: Currency?
+    ) -> ConvertRequest {
+        .init(
+            amount: amount ?? self.amount,
+            fromCurrency: fromCurrency ?? self.fromCurrency,
+            toCurrency: toCurrency ?? self.toCurrency
+        )
+    }
 }

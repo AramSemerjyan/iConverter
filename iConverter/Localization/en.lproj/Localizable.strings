@@ -11,6 +11,10 @@
 "errorTitle" = "Error";
 "noInternetMessage" = "No Internet Connection";
 "errorMessage" = "Something went wrong";
+"noEmptyFields" = "No empty fields are allowed";
+"noEmptyAmount" = "Amount can't be empty";
+"noEqualCurrency" = "Currencies can't be same";
+"noFounds" = "Insufficient funds";
 
 // MARK: - Success
 "successTitle" = "Success";
@@ -20,3 +24,7 @@
 
 // MARK: - Balance
 "currentBalance" = "Current Balance";
+
+// MARK: - Transaction
+"transactionTitle" = "New Transaction";
+"submitButtonTitle" = "Submit";

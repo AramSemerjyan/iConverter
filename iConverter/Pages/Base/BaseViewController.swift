@@ -70,4 +70,29 @@ extension BaseViewController {
         alert.addAction(.init(title: "Ok", style: .default))
         present(alert, animated: true)
     }
+    
+    func showActionSheet(
+        title: String? = nil,
+        message: String? = nil,
+        actions: [String],
+        onSelect: @escaping (Int) -> Void
+    ) {
+        let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        for i in 0..<actions.count {
+            let action = UIAlertAction(title: actions[i], style: .default) { (action) in
+                onSelect(i)
+            }
+            
+            actionSheet.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("didPress cancel")
+        }
+        
+        actionSheet.addAction(cancelAction)
+
+        self.present(actionSheet, animated: true, completion: nil)
+    }
 }

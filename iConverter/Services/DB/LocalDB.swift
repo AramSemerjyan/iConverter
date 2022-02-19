@@ -22,13 +22,13 @@ final class LocalDBService: LocalDBProtocol {
     private let standard = UserDefaults.standard
     
     func initialSetUp() {
-//        if standard.string(forKey: DBKeys.currentBalanceCurrency.rawValue) == nil {
+        if standard.string(forKey: DBKeys.currentBalanceCurrency.rawValue) == nil {
             standard.set(1000.0, forKey: Currency.usd.rawValue)
             standard.set(Currency.usd.rawValue, forKey: DBKeys.currentBalanceCurrency.rawValue)
         
-        standard.set(0.0, forKey: Currency.jpy.rawValue)
-        standard.set(0.0, forKey: Currency.eur.rawValue)
-//        }
+            standard.set(0.0, forKey: Currency.jpy.rawValue)
+            standard.set(0.0, forKey: Currency.eur.rawValue)
+        }
     }
     
     func get(for key: String) -> Any? {
