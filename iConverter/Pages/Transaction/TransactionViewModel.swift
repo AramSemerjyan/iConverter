@@ -12,8 +12,6 @@ class TransactionViewModel: BaseViewModel {
     
     // MARK: - services
     let converterService: ConverterServiceProtocol
-    let balanceService: BalanceDataStoreProtocol
-    let convertValidator: ConverterValidatorProtocol
     
     // MARK: - Inputs
     let amount: PublishRelay<String> = .init()
@@ -27,19 +25,10 @@ class TransactionViewModel: BaseViewModel {
     let selectedFromCurrency: BehaviorRelay<Currency> = .init(value: .usd)
     let selectedToCurrency: BehaviorRelay<Currency> = .init(value: .eur)
     let currencyOptions: BehaviorRelay<[Currency]> = .init(value: Currency.allCases)
-    let currencyValidation: BehaviorRelay<String?> = .init(value: nil)
-    let balanceValidation: BehaviorRelay<String?> = .init(value: nil)
-    let amountValidation: BehaviorRelay<String?> = .init(value: nil)
-    let onError: PublishRelay<String?> = .init()
+    let onSuccess: PublishRelay<String> = .init()
 
-    init(
-        converterService: ConverterServiceProtocol,
-        balancService: BalanceDataStoreProtocol,
-        convertValidator: ConverterValidatorProtocol
-    ) {
+    init(converterService: ConverterServiceProtocol) {
         self.converterService = converterService
-        self.balanceService = balancService
-        self.convertValidator = convertValidator
         
         super.init()
         
@@ -60,39 +49,34 @@ private extension TransactionViewModel {
             .bind(to: selectedToCurrency)
             .disposed(by: disposeBag)
         
-        amount
-            .map { [convertValidator] amount in
-                convertValidator.validateEmptyAmount(amount: amount.toDouble())
-            }
-            .bind(to: amountValidation)
-            .disposed(by: disposeBag)
-        
-        amount
-            .withLatestFrom(selectedFromCurrency) { (currency: $1, amount: $0) }
-            .map { [convertValidator, balanceService] t -> String? in
-                let balance = balanceService.getBalance(for: t.currency)
-                
-                return convertValidator.validateBalance(
-                    transactionAmount: t.amount.toDouble(),
-                    balance: balance?.amount
-                )
-            }.bind(to: balanceValidation)
-            .disposed(by: disposeBag)
-        
-        selectedFromCurrency
-            .withLatestFrom(selectedToCurrency) { [convertValidator] from, to -> String? in
-                convertValidator.validateCurrencies(fromCurrency: from, toCurrency: to)
-            }
-            .bind(to: currencyValidation)
-            .disposed(by: disposeBag)
-        
-        Observable.combineLatest(amountValidation, balanceValidation, currencyValidation) { (a, b, c) -> String? in
-            if a != nil { return a }
-            if b != nil { return b }
-            if c != nil { return c }
-            return nil
-        }
-        .bind(to: onError)
+        Observable.merge([
+            selectedFromCurrency
+                .withLatestFrom(transaction) { fromCurrency, transaction in transaction.copy(fromCurrency: fromCurrency) },
+            selectedToCurrency
+                .withLatestFrom(transaction) { toCurrency, transaction in transaction.copy(toCurrency: toCurrency) },
+            amount
+                .withLatestFrom(transaction) { amount, transaction in transaction.copy(amount: amount) }
+        ])
+        .bind(to: transaction)
         .disposed(by: disposeBag)
+        
+        converterService.onSuccess
+            .bind(to: onSuccess)
+            .disposed(by: disposeBag)
+        
+        convert
+            .do(onNext: { [onError] in onError.accept(nil) })
+            .withLatestFrom(transaction)
+            .bind(to: converterService.convert)
+            .disposed(by: disposeBag)
+                
+        
+        converterService.onError
+            .bind(to: onError)
+            .disposed(by: disposeBag)
+        
+        converterService.baseState
+            .bind(to: baseState)
+            .disposed(by: disposeBag)
     }
 }

@@ -21,9 +21,9 @@ extension ConvertRequest {
     }
     
     func copy(
-        amount: String?,
-        fromCurrency: Currency?,
-        toCurrency: Currency?
+        amount: String? = nil,
+        fromCurrency: Currency? = nil,
+        toCurrency: Currency? = nil
     ) -> ConvertRequest {
         .init(
             amount: amount ?? self.amount,

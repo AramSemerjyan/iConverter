@@ -14,6 +14,7 @@ protocol ConverterServiceProtocol {
     var convert: PublishRelay<ConvertRequest> { get }
     var baseState: PublishRelay<BaseState> { get }
     var onSuccess: PublishRelay<String> { get }
+    var onError: PublishRelay<String> { get }
 }
 
 final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
@@ -48,17 +49,48 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
 // MARK: - Do bindings
 extension ConverterService {
     func doBindings() {
-        let apiResult = convert
+        let response = convert
+            .map { [weak self] request -> ConvertRequest? in
+                if let error = self?.validate(request) {
+                    self?.onError.accept(error)
+                    return nil
+                }
+                
+                return request
+            }
+            .filterNil()
             .flatMap { [converterApi] request in converterApi.convert(with: request) }
             .share()
         
-        apiResult.compactMap(\.response)
+        response.compactMap(\.response)
             .map { "You've converted \($0.amount) to \($0.currency.rawValue)" }
             .bind(to: onSuccess)
             .disposed(by: disposeBag)
 
-        apiResult.compactMap(\.state)
+        response.compactMap(\.state)
             .bind(to: baseState)
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - validations
+private extension ConverterService {
+    func validate(_ request: ConvertRequest) -> String? {
+        if let error = converterValidator.validateCurrencies(fromCurrency: request.fromCurrency, toCurrency: request.toCurrency) {
+            onError.accept(error)
+            return error
+        }
+        
+        if let error = converterValidator.validateEmptyAmount(amount: request.amount.toDouble()) {
+            return error
+        }
+        
+        let balance = balanceDataStore.getBalance(for: request.fromCurrency)
+        
+        if let error = converterValidator.validateBalance(transactionAmount: request.amount.toDouble(), balance: balance?.amount) {
+            return error
+        }
+        
+        return nil
     }
 }

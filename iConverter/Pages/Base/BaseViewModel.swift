@@ -11,5 +11,6 @@ import RxRestClient
 
 class BaseViewModel: HasDisposeBag {
     // MARK: - Outputs
-    let baseState = PublishRelay<BaseState>()
+    let baseState: PublishRelay<BaseState> = .init()
+    let onError: PublishRelay<String?> = .init()
 }

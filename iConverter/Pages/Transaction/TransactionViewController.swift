@@ -101,9 +101,18 @@ private extension TransactionViewController {
             .bind(to: viewModel.amount)
             .disposed(by: rx.disposeBag)
         
-        viewModel
-            .onError
+        viewModel.onError
             .bind(to: errorLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.onSuccess
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] message in
+                self?.showAlert(title: iConverterLocalization.appName, message: message)
+            }).disposed(by: rx.disposeBag)
+        
+        submit.rx.tap
+            .bind(to: viewModel.convert)
             .disposed(by: rx.disposeBag)
     }
 }
