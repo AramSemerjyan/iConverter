@@ -18,7 +18,7 @@
 
 // MARK: - Success
 "successTitle" = "Success";
-"successMessage" = "Successfully converted";
+"successMessage" = "You have converted %@ to %@. Commission Fee - %@.";
 
 // MARK: - App Name
 "appName" = "iConverter";

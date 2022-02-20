@@ -48,10 +48,14 @@ final class iConverterLocalization {
         comment: "Success Title"
     )
     
-    static let successMessage = NSLocalizedString(
-        LocalizationKeys.successMessage.rawValue,
-        comment: "Success Message"
-    )
+    static func successMessage(_ transaction: Transaction) -> String {
+        let original = "\(transaction.original) \(transaction.fromCurrency.rawValue)"
+        let converted = "\(transaction.converted ?? 0.0) \(transaction.toCurrency.rawValue)"
+        let fee = "\(transaction.totalFee) \(transaction.fromCurrency)"
+        let localizedString = NSLocalizedString(LocalizationKeys.successMessage.rawValue, comment: "")
+        
+        return String(format: localizedString, original, converted, fee)
+    }
     
     // MARK: - App Name
     static let appName = NSLocalizedString(
