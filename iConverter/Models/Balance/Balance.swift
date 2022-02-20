@@ -11,8 +11,8 @@ struct Balance {
     let currency: Currency
     let amount: Double
     
-    var nameWithSymbol: String { currency.symbol + amount.toString() }
-    var nameWithCurrency: String { amount.toString() + currency.symbol }
+    var nameWithSymbol: String { "\(currency.symbol) \(amount.toString())" }
+    var nameWithCurrency: String { "\(amount.toString()) \(currency.symbol)" }
 }
 
 extension Balance {

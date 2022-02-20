@@ -79,7 +79,7 @@ extension ConverterService {
         
         transaction
             .subscribe(onNext: { [historyService] t in
-                historyService.saveTransaction(t)
+                historyService.saveTransaction(t.copy(createdDate: .now))
             }).disposed(by: disposeBag)
         
         transaction

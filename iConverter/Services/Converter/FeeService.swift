@@ -24,7 +24,10 @@ final class FeeService: FeeServiceProtocol {
         if history.count < iConverterConstants.freeOfFeeCount {
             return transaction.copy(priceWithFee: transaction.original)
         } else {
-            return transaction.copy(priceWithFee: transaction.original + transaction.toCurrency.fee)
+            return transaction.copy(
+                priceWithFee: transaction.original + transaction.toCurrency.fee,
+                fees: [.init(fee: transaction.toCurrency.fee, description: "Transaction fee")]
+            )
         }
     }
 }
