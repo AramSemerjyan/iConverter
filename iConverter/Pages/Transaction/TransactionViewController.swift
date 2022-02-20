@@ -69,6 +69,11 @@ private extension TransactionViewController {
 // MARK: - do bindings
 private extension TransactionViewController {
     func doBindings() {
+        bindInputs()
+        bindOutputs()
+    }
+    
+    func bindInputs() {
         fromCurrencyButton.rx.tap
             .withLatestFrom(viewModel.currencyOptions)
             .subscribe(onNext: { [weak self] options in
@@ -101,6 +106,12 @@ private extension TransactionViewController {
             .bind(to: viewModel.amount)
             .disposed(by: rx.disposeBag)
         
+        submit.rx.tap
+            .bind(to: viewModel.convert)
+            .disposed(by: rx.disposeBag)
+    }
+    
+    func bindOutputs() {
         viewModel.onError
             .bind(to: errorLabel.rx.text)
             .disposed(by: rx.disposeBag)
@@ -111,8 +122,12 @@ private extension TransactionViewController {
                 self?.showAlert(title: iConverterLocalization.appName, message: message)
             }).disposed(by: rx.disposeBag)
         
-        submit.rx.tap
-            .bind(to: viewModel.convert)
+        viewModel.startLoading
+            .bind(to: startLoading)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.stopLoading
+            .bind(to: stopLoading)
             .disposed(by: rx.disposeBag)
     }
 }

@@ -17,7 +17,9 @@ import NSObject_Rx
 class BaseViewController: UIViewController {
     
     // MARK: - Inputs
-    let baseState = PublishRelay<BaseState>()
+    let baseState: PublishRelay<BaseState> = .init()
+    let startLoading: PublishRelay<Void> = .init()
+    let stopLoading: PublishRelay<Void> = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,39 @@ private extension BaseViewController {
             )
         })
         .disposed(by: rx.disposeBag)
+        
+        startLoading
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.addLoaderView()
+            }).disposed(by: rx.disposeBag)
+        
+        stopLoading
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.removeLoader()
+            }).disposed(by: rx.disposeBag)
+    }
+}
+
+// MARK: - loader view
+private extension BaseViewController {
+    func addLoaderView() {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.startAnimating()
+        
+        let containerView = UIView(frame: view.frame)
+        indicator.center = containerView.center
+        containerView.backgroundColor = .overlaySemiTransparent
+        
+        containerView.addSubview(indicator)
+        containerView.tag = ViewTag.activityIndicatorContainer.rawValue
+        
+        view.addSubview(containerView)
+    }
+    
+    func removeLoader() {
+        self.view.viewWithTag(ViewTag.activityIndicatorContainer.rawValue)?.removeFromSuperview()
     }
 }
 
