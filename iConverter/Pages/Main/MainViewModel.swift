@@ -11,7 +11,7 @@ import RxRelay
 final class MainViewModel: BaseViewModel {
     // MARK: - Services
     let balanceDataStore: BalanceDataStoreProtocol
-    let historyDataStore: HistoryServiceProtocol
+    let historyDataStore: HistoryDataStoreProtocol
     
     // MARK: - Output
     let onSuccess: PublishRelay<String> = .init()
@@ -21,7 +21,7 @@ final class MainViewModel: BaseViewModel {
     
     init(
         balanceDataStore: BalanceDataStoreProtocol,
-        historyDataStore: HistoryServiceProtocol
+        historyDataStore: HistoryDataStoreProtocol
     ) {
         self.balanceDataStore = balanceDataStore
         self.historyDataStore = historyDataStore

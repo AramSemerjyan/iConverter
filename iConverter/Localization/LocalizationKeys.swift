@@ -20,6 +20,7 @@ enum LocalizationKeys: String {
     
     // MARK: - success
     case successTitle
+    case successMessage
     
     // MARK: - balance
     case currentBalance

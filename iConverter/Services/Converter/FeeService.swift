@@ -17,7 +17,7 @@ protocol FeeServiceProtocol {
 
 final class FeeService: FeeServiceProtocol, HasDisposeBag {
     // MARK: - services
-    let historyService: HistoryServiceProtocol
+    let historyService: HistoryDataStoreProtocol
     
     // MARK: - inputs
     let addFee: PublishSubject<Transaction> = .init()
@@ -25,7 +25,7 @@ final class FeeService: FeeServiceProtocol, HasDisposeBag {
     // MARK: - ouputs
     let updatedTransaction: PublishSubject<Transaction> = .init()
     
-    init(historyService: HistoryServiceProtocol) {
+    init(historyService: HistoryDataStoreProtocol) {
         self.historyService = historyService
         
         doBindings()

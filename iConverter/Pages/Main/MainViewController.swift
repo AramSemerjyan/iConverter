@@ -35,11 +35,8 @@ class MainViewController: BaseViewController {
         setUpTableView()
     }
     
-    @IBAction func addNewTransaction(_ sender: UIButton) {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        let controller = delegate.parentAssembler.resolver ~> TransactionViewController.self
-        
-        self.present(controller, animated: true)
+    @IBAction func addNewTransaction(_ sender: UIButton) {        
+        self.present(resolver ~> TransactionViewController.self, animated: true)
     }
 }
 

@@ -9,13 +9,13 @@ import Foundation
 import RxRelay
 import NSObject_Rx
 
-protocol HistoryServiceProtocol {
+protocol HistoryDataStoreProtocol {
     var updateHistory: PublishRelay<Void> { get }
     var saveTransaction: PublishRelay<Transaction> { get }
     var history: BehaviorRelay<[Transaction]> { get }
 }
 
-final class HistoryService: HistoryServiceProtocol, HasDisposeBag {
+final class HistoryDataStore: HistoryDataStoreProtocol, HasDisposeBag {
     // MARK: - services
     let localDB: LocalDBProtocol
     
@@ -36,7 +36,7 @@ final class HistoryService: HistoryServiceProtocol, HasDisposeBag {
 }
 
 // MARK: - do bindings
-private extension HistoryService {
+private extension HistoryDataStore {
     func doBindings() {
         saveTransaction
             .withLatestFrom(history) { (transaction: $0, history: $1) }

@@ -22,7 +22,7 @@ final class ServiceAssembly: Assembly {
             .autoregister(BalanceDataStoreProtocol.self, initializer: BalanceDataStore.init)
             .inObjectScope(.container)
         container.autoregister(FeeServiceProtocol.self, initializer: FeeService.init)
-        container.autoregister(HistoryServiceProtocol.self, initializer: HistoryService.init).inObjectScope(.container)
+        container.autoregister(HistoryDataStoreProtocol.self, initializer: HistoryDataStore.init).inObjectScope(.container)
     }
 }
 

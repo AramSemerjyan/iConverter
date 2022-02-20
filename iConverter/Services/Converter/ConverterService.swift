@@ -22,7 +22,7 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
     let converterApi: ConverterApiProtocol
     let balanceDataStore: BalanceDataStoreProtocol
     let feeService: FeeServiceProtocol
-    let historyService: HistoryServiceProtocol
+    let historyService: HistoryDataStoreProtocol
     
     // MARK: - validator
     let converterValidator: ConverterValidatorProtocol
@@ -40,7 +40,7 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
         balanceDataStore: BalanceDataStoreProtocol,
         converterValidator: ConverterValidatorProtocol,
         feeService: FeeServiceProtocol,
-        historyService: HistoryServiceProtocol
+        historyService: HistoryDataStoreProtocol
     ) {
         self.converterApi = converterApi
         self.balanceDataStore = balanceDataStore

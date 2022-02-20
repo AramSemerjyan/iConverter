@@ -28,6 +28,7 @@
 		AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935C27BF0EBF00719E44 /* MainAssembly.swift */; };
 		AE61936127BF0F9D00719E44 /* ViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */; };
 		AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936327BF10C100719E44 /* NSObject+Extension.swift */; };
+		AE8A94C727C21E3A0058B17B /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A94C627C21E3A0058B17B /* DI.swift */; };
 		AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04CD27C037C400A16D51 /* ConverterService.swift */; };
 		AE8B04D127C0F8CF00A16D51 /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */; };
 		AE8B04D327C103B400A16D51 /* FeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D227C103B400A16D51 /* FeeService.swift */; };
@@ -47,7 +48,7 @@
 		AE8B050827C1987900A16D51 /* ConverterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B050727C1987900A16D51 /* ConverterValidator.swift */; };
 		AE8B050D27C1C31000A16D51 /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B050C27C1C31000A16D51 /* Fee.swift */; };
 		AE8B051327C1C40900A16D51 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051227C1C40900A16D51 /* Transaction.swift */; };
-		AE8B051627C1C47100A16D51 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051527C1C47100A16D51 /* HistoryService.swift */; };
+		AE8B051627C1C47100A16D51 /* HistoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051527C1C47100A16D51 /* HistoryDataStore.swift */; };
 		AE8B051927C1C71500A16D51 /* iConverterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051827C1C71500A16D51 /* iConverterConstants.swift */; };
 		AE8B051C27C1E92800A16D51 /* HistoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051B27C1E92700A16D51 /* HistoryItemCell.swift */; };
 		AE8B051E27C1E93500A16D51 /* HistoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8B051D27C1E93500A16D51 /* HistoryItemCell.xib */; };
@@ -107,6 +108,7 @@
 		AE61935C27BF0EBF00719E44 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		AE61936327BF10C100719E44 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		AE8A94C627C21E3A0058B17B /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		AE8B04CD27C037C400A16D51 /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
 		AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
 		AE8B04D227C103B400A16D51 /* FeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeService.swift; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 		AE8B050727C1987900A16D51 /* ConverterValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterValidator.swift; sourceTree = "<group>"; };
 		AE8B050C27C1C31000A16D51 /* Fee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
 		AE8B051227C1C40900A16D51 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		AE8B051527C1C47100A16D51 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		AE8B051527C1C47100A16D51 /* HistoryDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDataStore.swift; sourceTree = "<group>"; };
 		AE8B051827C1C71500A16D51 /* iConverterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterConstants.swift; sourceTree = "<group>"; };
 		AE8B051B27C1E92700A16D51 /* HistoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemCell.swift; sourceTree = "<group>"; };
 		AE8B051D27C1E93500A16D51 /* HistoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryItemCell.xib; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				AE61935027BF076D00719E44 /* ServiceAssembly.swift */,
 				AE61935C27BF0EBF00719E44 /* MainAssembly.swift */,
+				AE8A94C627C21E3A0058B17B /* DI.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -478,7 +481,7 @@
 		AE8B051427C1C46300A16D51 /* HistoryService */ = {
 			isa = PBXGroup;
 			children = (
-				AE8B051527C1C47100A16D51 /* HistoryService.swift */,
+				AE8B051527C1C47100A16D51 /* HistoryDataStore.swift */,
 			);
 			path = HistoryService;
 			sourceTree = "<group>";
@@ -834,13 +837,14 @@
 				AE8B04E927C11D6100A16D51 /* BalancesContainer.swift in Sources */,
 				AE61933927BEFF3400719E44 /* Currency.swift in Sources */,
 				AE61934F27BF066700719E44 /* Endpoints.swift in Sources */,
+				AE8A94C727C21E3A0058B17B /* DI.swift in Sources */,
 				AE61935127BF076D00719E44 /* ServiceAssembly.swift in Sources */,
 				AE61935B27BF0E2000719E44 /* BaseViewModel.swift in Sources */,
 				AE8B04E327C1111800A16D51 /* LocalDB.swift in Sources */,
 				AE61935627BF0A3000719E44 /* AppConfigs.swift in Sources */,
 				AE8B052127C1EF8400A16D51 /* iConverterFormater.swift in Sources */,
 				AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */,
-				AE8B051627C1C47100A16D51 /* HistoryService.swift in Sources */,
+				AE8B051627C1C47100A16D51 /* HistoryDataStore.swift in Sources */,
 				AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */,
 				AE61935827BF0DDA00719E44 /* MainViewModel.swift in Sources */,
 				AE8B051927C1C71500A16D51 /* iConverterConstants.swift in Sources */,

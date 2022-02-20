@@ -61,7 +61,7 @@ private extension TransactionViewModel {
         .disposed(by: disposeBag)
         
         converterService.onSuccess
-            .map { _ in "Success" }
+            .map { _ in iConverterLocalization.successMessage }
             .bind(to: onSuccess)
             .disposed(by: disposeBag)
         

@@ -48,6 +48,11 @@ final class iConverterLocalization {
         comment: "Success Title"
     )
     
+    static let successMessage = NSLocalizedString(
+        LocalizationKeys.successMessage.rawValue,
+        comment: "Success Message"
+    )
+    
     // MARK: - App Name
     static let appName = NSLocalizedString(
         LocalizationKeys.appName.rawValue,

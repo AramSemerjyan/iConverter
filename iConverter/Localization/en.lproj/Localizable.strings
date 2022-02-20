@@ -18,6 +18,7 @@
 
 // MARK: - Success
 "successTitle" = "Success";
+"successMessage" = "Successfully converted";
 
 // MARK: - App Name
 "appName" = "iConverter";
