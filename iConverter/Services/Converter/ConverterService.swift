@@ -66,9 +66,11 @@ extension ConverterService {
             }
             .filterNil()
         
-        let afterFee = checkRequest.map { [feeService] request in
-            feeService.addFee(for: request)
-        }
+        checkRequest
+            .bind(to: feeService.addFee)
+            .disposed(by: disposeBag)
+        
+        let afterFee = feeService.updatedTransaction
                 
         let response = checkRequest
             .flatMap { [converterApi] request in converterApi.convert(with: request) }
@@ -78,14 +80,19 @@ extension ConverterService {
             .withLatestFrom(afterFee) { $1.copy(converted: $0.amount.toDouble()) }
         
         transaction
-            .subscribe(onNext: { [historyService] t in
-                historyService.saveTransaction(t.copy(createdDate: .now))
-            }).disposed(by: disposeBag)
+            .map { $0.copy(createdDate: .now) }
+            .bind(to: historyService.saveTransaction)
+            .disposed(by: disposeBag)
         
         transaction
             .subscribe(onNext: { [balanceDataStore] t in
                 balanceDataStore.update(with: t)
             }).disposed(by: disposeBag)
+        
+        transaction
+            .map { _ in () }
+            .bind(to: historyService.updateHistory)
+            .disposed(by: disposeBag)
 
         transaction
             .bind(to: onSuccess)

@@ -5,29 +5,48 @@
 //  Created by Aram Semerjyan on 2/19/22.
 //
 
+import RxSwift
+import NSObject_Rx
+
 // Here we can have additional fees
 // Additional calculation for transaction
 protocol FeeServiceProtocol {
-    func addFee(for: Transaction) -> Transaction
+    var addFee: PublishSubject<Transaction> { get }
+    var updatedTransaction: PublishSubject<Transaction> { get }
 }
 
-final class FeeService: FeeServiceProtocol {
+final class FeeService: FeeServiceProtocol, HasDisposeBag {
+    // MARK: - services
     let historyService: HistoryServiceProtocol
+    
+    // MARK: - inputs
+    let addFee: PublishSubject<Transaction> = .init()
+    
+    // MARK: - ouputs
+    let updatedTransaction: PublishSubject<Transaction> = .init()
     
     init(historyService: HistoryServiceProtocol) {
         self.historyService = historyService
-    }
-    
-    func addFee(for transaction: Transaction) -> Transaction {
-        let history = historyService.getHistory()
         
-        if history.count < iConverterConstants.freeOfFeeCount {
-            return transaction.copy(priceWithFee: transaction.original)
-        } else {
-            return transaction.copy(
-                priceWithFee: transaction.original + transaction.toCurrency.fee,
-                fees: [.init(fee: transaction.toCurrency.fee, description: "Transaction fee")]
-            )
-        }
+        doBindings()
+    }
+}
+
+// MARK: - do bindings
+private extension FeeService {
+    func doBindings() {
+        addFee
+            .withLatestFrom(historyService.history) { (transaction: $0, historyCount: $1.count) }
+            .map { t in
+                if t.historyCount < iConverterConstants.freeOfFeeCount {
+                    return t.transaction.copy(priceWithFee: t.transaction.original)
+                } else {
+                    return t.transaction.copy(
+                        priceWithFee: t.transaction.original + t.transaction.toCurrency.fee,
+                        fees: [.init(fee: t.transaction.toCurrency.fee, description: "Transaction fee")]
+                    )
+                }
+            }.bind(to: updatedTransaction)
+            .disposed(by: disposeBag)
     }
 }

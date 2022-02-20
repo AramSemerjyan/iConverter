@@ -41,13 +41,14 @@ extension MainViewModel {
         
         self.currentBalance.accept(currentBalance?.nameWithSymbol)
         self.otherBalances.accept(otherBalances)
-        self.transactionsHistory.accept(historyDataStore.getHistory())
     }
 }
 
 // MARK: - Do bindings
 extension MainViewModel {
     func doBindings() {
-
+        historyDataStore.history
+            .bind(to: transactionsHistory)
+            .disposed(by: disposeBag)
     }
 }
