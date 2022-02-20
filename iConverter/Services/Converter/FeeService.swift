@@ -43,7 +43,10 @@ private extension FeeService {
                 } else {
                     return t.transaction.copy(
                         priceWithFee: t.transaction.original + t.transaction.toCurrency.fee,
-                        fees: [.init(fee: t.transaction.toCurrency.fee, description: "Transaction fee")]
+                        fees: [.init(
+                            fee: t.transaction.toCurrency.fee,
+                            description: iConverterLocalization.standardTransactionFeeDescription
+                        )]
                     )
                 }
             }.bind(to: updatedTransaction)

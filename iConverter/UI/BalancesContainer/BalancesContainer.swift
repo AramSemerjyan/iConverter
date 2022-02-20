@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 final class BalancesContainer: UIView {
+    // MARK: - outlets
     @IBOutlet weak var stackConainer: UIStackView!
     
+    // MARK: - update container
     func updateBalances(_ balances: [Balance]) {
         stackConainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
@@ -21,6 +23,7 @@ final class BalancesContainer: UIView {
         }
     }
     
+    // MARK: - init
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
 
@@ -44,6 +47,7 @@ private extension BalancesContainer {
     }
 }
 
+// MARK: - get items
 private extension BalancesContainer {
     func getContainerItem(_ balance: Balance) -> BalanceItem? {
         guard let item = Bundle.main.loadNibNamed(

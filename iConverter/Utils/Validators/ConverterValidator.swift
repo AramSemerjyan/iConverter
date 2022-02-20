@@ -11,7 +11,7 @@ protocol ConverterValidatorProtocol {
     func validateCurrencies(fromCurrency: Currency, toCurrency: Currency) -> String?
 }
 
-class ConverterValidator: ConverterValidatorProtocol {
+final class ConverterValidator: ConverterValidatorProtocol {
     func validateEmptyAmount(amount: Double?) -> String? {
         guard let amount = amount else { return iConverterLocalization.noEmptyAmount }
         guard amount != 0.0 else { return iConverterLocalization.noEmptyAmount }

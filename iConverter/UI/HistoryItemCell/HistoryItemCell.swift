@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HistoryItemCell: UITableViewCell {
+final class HistoryItemCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var fromCurrencyTitle: UILabel!
     @IBOutlet weak var toCurrencyTitle: UILabel!
@@ -16,6 +16,7 @@ class HistoryItemCell: UITableViewCell {
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    // MARK: - configure
     func configure(with transaction: Transaction) {
         fromCurrencyTitle.text = transaction.fromCurrency.rawValue
         toCurrencyTitle.text = transaction.toCurrency.rawValue

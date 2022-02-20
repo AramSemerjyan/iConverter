@@ -75,4 +75,9 @@ final class iConverterLocalization {
         LocalizationKeys.submitButtonTitle.rawValue,
         comment: "Submit button title"
     )
+    
+    static let standardTransactionFeeDescription = NSLocalizedString(
+        LocalizationKeys.standardTransactionFeeDescription.rawValue,
+        comment: "Standard commission"
+    )
 }

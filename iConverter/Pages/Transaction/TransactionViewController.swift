@@ -13,7 +13,6 @@ class TransactionViewController: BaseViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var pageTitle: UILabel!
-    
     @IBOutlet weak var fromAmountField: UITextField!
     @IBOutlet weak var fromCurrencyButton: UIButton!
     @IBOutlet weak var toCurrencyButton: UIButton!
