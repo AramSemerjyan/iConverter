@@ -10,6 +10,7 @@ import Foundation
 enum DBKeys: String {
     case currentBalance
     case currentBalanceCurrency
+    case transactionHistory
 }
 
 protocol LocalDBProtocol {

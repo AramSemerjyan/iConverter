@@ -5,16 +5,26 @@
 //  Created by Aram Semerjyan on 2/19/22.
 //
 
-import Foundation
-
 // Here we can have additional fees
 // Additional calculation for transaction
 protocol FeeServiceProtocol {
-    func addFee(for: Currency, withAmount: Double) -> Double
+    func addFee(for: Transaction) -> Transaction
 }
 
 final class FeeService: FeeServiceProtocol {
-    func addFee(for currency: Currency, withAmount amount: Double) -> Double {
-        amount - currency.fee
+    let historyService: HistoryServiceProtocol
+    
+    init(historyService: HistoryServiceProtocol) {
+        self.historyService = historyService
+    }
+    
+    func addFee(for transaction: Transaction) -> Transaction {
+        let history = historyService.getHistory()
+        
+        if history.count < iConverterConstants.freeOfFeeCount {
+            return transaction.copy(priceWithFee: transaction.original)
+        } else {
+            return transaction.copy(priceWithFee: transaction.original + transaction.toCurrency.fee)
+        }
     }
 }

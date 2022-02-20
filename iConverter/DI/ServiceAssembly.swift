@@ -21,6 +21,8 @@ final class ServiceAssembly: Assembly {
         container
             .autoregister(BalanceDataStoreProtocol.self, initializer: BalanceDataStore.init)
             .inObjectScope(.container)
+        container.autoregister(FeeServiceProtocol.self, initializer: FeeService.init)
+        container.autoregister(HistoryServiceProtocol.self, initializer: HistoryService.init)
     }
 }
 

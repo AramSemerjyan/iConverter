@@ -9,15 +9,15 @@ import RxRestClient
 import RxSwift
 
 protocol ConverterApiProtocol {
-    func convert(with: ConvertRequest) -> Observable<ConvertState>
+    func convert(with: Transaction) -> Observable<ConvertState>
 }
 
 final class ConverterApiService: BaseApiService { }
 
 extension ConverterApiService: ConverterApiProtocol {
-    func convert(with request: ConvertRequest) -> Observable<ConvertState> {
+    func convert(with request: Transaction) -> Observable<ConvertState> {
         client.get(Endpoints.Converter.convert(
-            amount: request.amount,
+            amount: request.original.toString(),
             from: request.fromCurrency,
             to: request.toCurrency
         ))

@@ -15,7 +15,6 @@
 		AE61933527BEF84600719E44 /* LocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933427BEF84600719E44 /* LocalizationKeys.swift */; };
 		AE61933927BEFF3400719E44 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933827BEFF3400719E44 /* Currency.swift */; };
 		AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933B27BF015E00719E44 /* ConvertResponse.swift */; };
-		AE61933E27BF02B300719E44 /* ConverterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933D27BF02B300719E44 /* ConverterRequest.swift */; };
 		AE61934227BF040700719E44 /* ConverterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934127BF040700719E44 /* ConverterApi.swift */; };
 		AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934427BF04A300719E44 /* BaseApiService.swift */; };
 		AE61934827BF057200719E44 /* SingleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934727BF057200719E44 /* SingleState.swift */; };
@@ -32,7 +31,6 @@
 		AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04CD27C037C400A16D51 /* ConverterService.swift */; };
 		AE8B04D127C0F8CF00A16D51 /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */; };
 		AE8B04D327C103B400A16D51 /* FeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D227C103B400A16D51 /* FeeService.swift */; };
-		AE8B04D627C1076000A16D51 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D527C1076000A16D51 /* BalanceService.swift */; };
 		AE8B04D927C107A300A16D51 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D827C107A300A16D51 /* Balance.swift */; };
 		AE8B04DB27C10A1A00A16D51 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE8B04DA27C10A1A00A16D51 /* Colors.xcassets */; };
 		AE8B04DE27C10B3300A16D51 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04DD27C10B3300A16D51 /* UIColor+Extension.swift */; };
@@ -47,6 +45,10 @@
 		AE8B04FE27C16BFC00A16D51 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04FD27C16BFC00A16D51 /* TransactionViewModel.swift */; };
 		AE8B050627C195FF00A16D51 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B050527C195FF00A16D51 /* String+Extension.swift */; };
 		AE8B050827C1987900A16D51 /* ConverterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B050727C1987900A16D51 /* ConverterValidator.swift */; };
+		AE8B050D27C1C31000A16D51 /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B050C27C1C31000A16D51 /* Fee.swift */; };
+		AE8B051327C1C40900A16D51 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051227C1C40900A16D51 /* Transaction.swift */; };
+		AE8B051627C1C47100A16D51 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051527C1C47100A16D51 /* HistoryService.swift */; };
+		AE8B051927C1C71500A16D51 /* iConverterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051827C1C71500A16D51 /* iConverterConstants.swift */; };
 		AECEC18F27BBDB99002EB9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */; };
 		AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC19227BBDB99002EB9CE /* MainViewController.swift */; };
 		AECEC19627BBDB99002EB9CE /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */; };
@@ -89,7 +91,6 @@
 		AE61933427BEF84600719E44 /* LocalizationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKeys.swift; sourceTree = "<group>"; };
 		AE61933827BEFF3400719E44 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		AE61933B27BF015E00719E44 /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
-		AE61933D27BF02B300719E44 /* ConverterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRequest.swift; sourceTree = "<group>"; };
 		AE61934127BF040700719E44 /* ConverterApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterApi.swift; sourceTree = "<group>"; };
 		AE61934427BF04A300719E44 /* BaseApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
 		AE61934727BF057200719E44 /* SingleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleState.swift; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		AE8B04CD27C037C400A16D51 /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
 		AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
 		AE8B04D227C103B400A16D51 /* FeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeService.swift; sourceTree = "<group>"; };
-		AE8B04D527C1076000A16D51 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
 		AE8B04D827C107A300A16D51 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		AE8B04DA27C10A1A00A16D51 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		AE8B04DD27C10B3300A16D51 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -121,6 +121,10 @@
 		AE8B04FD27C16BFC00A16D51 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		AE8B050527C195FF00A16D51 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		AE8B050727C1987900A16D51 /* ConverterValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterValidator.swift; sourceTree = "<group>"; };
+		AE8B050C27C1C31000A16D51 /* Fee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
+		AE8B051227C1C40900A16D51 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		AE8B051527C1C47100A16D51 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		AE8B051827C1C71500A16D51 /* iConverterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterConstants.swift; sourceTree = "<group>"; };
 		AECEC18B27BBDB99002EB9CE /* iConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AECEC19227BBDB99002EB9CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +182,7 @@
 		AE61932327BEEDAA00719E44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AE8B04D427C1073A00A16D51 /* BalanceService */,
+				AE8B051427C1C46300A16D51 /* HistoryService */,
 				AE8B04CF27C0F8BE00A16D51 /* DB */,
 				AE8B04CC27C037A900A16D51 /* Converter */,
 				AE61933627BEFB5D00719E44 /* Networking */,
@@ -199,6 +203,7 @@
 		AE61932527BEEDB900719E44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B051127C1C3FB00A16D51 /* Transaction */,
 				AE8B04D727C1079900A16D51 /* Balance */,
 				AE61934627BF056600719E44 /* Base */,
 				AE61933A27BF00E200719E44 /* Convert */,
@@ -267,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				AE61933B27BF015E00719E44 /* ConvertResponse.swift */,
-				AE61933D27BF02B300719E44 /* ConverterRequest.swift */,
+				AE8B050C27C1C31000A16D51 /* Fee.swift */,
 			);
 			path = Convert;
 			sourceTree = "<group>";
@@ -377,14 +382,6 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
-		AE8B04D427C1073A00A16D51 /* BalanceService */ = {
-			isa = PBXGroup;
-			children = (
-				AE8B04D527C1076000A16D51 /* BalanceService.swift */,
-			);
-			path = BalanceService;
-			sourceTree = "<group>";
-		};
 		AE8B04D727C1079900A16D51 /* Balance */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +459,30 @@
 			path = String;
 			sourceTree = "<group>";
 		};
+		AE8B051127C1C3FB00A16D51 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B051227C1C40900A16D51 /* Transaction.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		AE8B051427C1C46300A16D51 /* HistoryService */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B051527C1C47100A16D51 /* HistoryService.swift */,
+			);
+			path = HistoryService;
+			sourceTree = "<group>";
+		};
+		AE8B051727C1C70600A16D51 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B051827C1C71500A16D51 /* iConverterConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		AECEC18227BBDB99002EB9CE = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +508,7 @@
 		AECEC18D27BBDB99002EB9CE /* iConverter */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B051727C1C70600A16D51 /* Constants */,
 				AE8B04E427C11D3400A16D51 /* UI */,
 				AE61935427BF0A1300719E44 /* Configs */,
 				AE61934927BF059500719E44 /* Utils */,
@@ -791,16 +813,18 @@
 				AE8B04E327C1111800A16D51 /* LocalDB.swift in Sources */,
 				AE61935627BF0A3000719E44 /* AppConfigs.swift in Sources */,
 				AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */,
-				AE8B04D627C1076000A16D51 /* BalanceService.swift in Sources */,
+				AE8B051627C1C47100A16D51 /* HistoryService.swift in Sources */,
 				AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */,
 				AE61935827BF0DDA00719E44 /* MainViewModel.swift in Sources */,
-				AE61933E27BF02B300719E44 /* ConverterRequest.swift in Sources */,
+				AE8B051927C1C71500A16D51 /* iConverterConstants.swift in Sources */,
 				AE8B050827C1987900A16D51 /* ConverterValidator.swift in Sources */,
 				AE61933527BEF84600719E44 /* LocalizationKeys.swift in Sources */,
 				AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */,
 				AE8B04E127C10C8000A16D51 /* Double+Extension.swift in Sources */,
 				AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */,
 				AE61934827BF057200719E44 /* SingleState.swift in Sources */,
+				AE8B050D27C1C31000A16D51 /* Fee.swift in Sources */,
+				AE8B051327C1C40900A16D51 /* Transaction.swift in Sources */,
 				AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */,
 				AE8B04D927C107A300A16D51 /* Balance.swift in Sources */,
 				AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */,

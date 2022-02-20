@@ -9,7 +9,9 @@ import Foundation
 import RxRelay
 
 protocol BalanceDataStoreProtocol {
-    func getBalance(for: Currency) -> Balance?
+    func update(with transaction: Transaction)
+    func updateBalance(_ balance: Balance)
+    func getBalance(for: Currency) -> Balance
     func getCurrentBalance() -> Balance?
     func getOtherBalances() -> [Balance]
 }
@@ -21,8 +23,24 @@ final class BalanceDataStore: BalanceDataStoreProtocol {
         self.db = db
     }
     
-    func getBalance(for currency: Currency) -> Balance? {
-        guard let balanceAmount = db.get(for: currency.rawValue) as? Double else { return nil }
+    func update(with transaction: Transaction) {
+        let fromBalance = getBalance(for: transaction.fromCurrency)
+        
+        updateBalance(fromBalance.copy(amount: fromBalance.amount - transaction.priceWithFee))
+        
+        let toBalance = getBalance(for: transaction.toCurrency)
+        
+        updateBalance(toBalance.copy(amount: toBalance.amount + (transaction.converted ?? 0.0)))
+    }
+    
+    func updateBalance(_ balance: Balance) {
+        db.set(data: balance.amount, for: balance.currency.rawValue)
+    }
+    
+    func getBalance(for currency: Currency) -> Balance {
+        guard let balanceAmount = db.get(for: currency.rawValue) as? Double else {
+            return .init(currency: currency, amount: 0.0)
+        }
         
         return Balance(currency: currency, amount: balanceAmount)
     }
@@ -55,7 +73,8 @@ final class BalanceDataStore: BalanceDataStoreProtocol {
         }
         
         Currency.allCases.forEach { currency in
-            if currency != currentCurrency, let balance = getBalance(for: currency) {
+            if currency != currentCurrency {
+                let balance = getBalance(for: currency)
                 balances.append(balance)
             }
         }

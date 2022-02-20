@@ -17,7 +17,7 @@ class TransactionViewModel: BaseViewModel {
     let amount: PublishRelay<String> = .init()
     let selectFromCurrency: PublishRelay<Int> = .init()
     let selectToCurrency: PublishRelay<Int> = .init()
-    let transaction: BehaviorRelay<ConvertRequest> = .init(value: .empty())
+    let transaction: BehaviorRelay<Transaction> = .init(value: .empty())
     let convert: PublishRelay<Void> = .init()
     let isValid: BehaviorRelay<Bool> = .init(value: false)
     
@@ -55,12 +55,13 @@ private extension TransactionViewModel {
             selectedToCurrency
                 .withLatestFrom(transaction) { toCurrency, transaction in transaction.copy(toCurrency: toCurrency) },
             amount
-                .withLatestFrom(transaction) { amount, transaction in transaction.copy(amount: amount) }
+                .withLatestFrom(transaction) { amount, transaction in transaction.copy(original: amount.toDouble()) }
         ])
         .bind(to: transaction)
         .disposed(by: disposeBag)
         
         converterService.onSuccess
+            .map { _ in "Success" }
             .bind(to: onSuccess)
             .disposed(by: disposeBag)
         
