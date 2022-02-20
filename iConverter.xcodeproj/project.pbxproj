@@ -49,6 +49,8 @@
 		AE8B051327C1C40900A16D51 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051227C1C40900A16D51 /* Transaction.swift */; };
 		AE8B051627C1C47100A16D51 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051527C1C47100A16D51 /* HistoryService.swift */; };
 		AE8B051927C1C71500A16D51 /* iConverterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051827C1C71500A16D51 /* iConverterConstants.swift */; };
+		AE8B051C27C1E92800A16D51 /* HistoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B051B27C1E92700A16D51 /* HistoryItemCell.swift */; };
+		AE8B051E27C1E93500A16D51 /* HistoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8B051D27C1E93500A16D51 /* HistoryItemCell.xib */; };
 		AECEC18F27BBDB99002EB9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */; };
 		AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC19227BBDB99002EB9CE /* MainViewController.swift */; };
 		AECEC19627BBDB99002EB9CE /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */; };
@@ -125,6 +127,8 @@
 		AE8B051227C1C40900A16D51 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		AE8B051527C1C47100A16D51 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		AE8B051827C1C71500A16D51 /* iConverterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterConstants.swift; sourceTree = "<group>"; };
+		AE8B051B27C1E92700A16D51 /* HistoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemCell.swift; sourceTree = "<group>"; };
+		AE8B051D27C1E93500A16D51 /* HistoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryItemCell.xib; sourceTree = "<group>"; };
 		AECEC18B27BBDB99002EB9CE /* iConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECEC18E27BBDB99002EB9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AECEC19227BBDB99002EB9CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 		AE8B04E427C11D3400A16D51 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AE8B051A27C1E8B900A16D51 /* HistoryItemCell */,
 				AE8B04EA27C11DD200A16D51 /* BalanceItem */,
 				AE8B04E527C11D3900A16D51 /* BalancesContainer */,
 			);
@@ -481,6 +486,15 @@
 				AE8B051827C1C71500A16D51 /* iConverterConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		AE8B051A27C1E8B900A16D51 /* HistoryItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B051B27C1E92700A16D51 /* HistoryItemCell.swift */,
+				AE8B051D27C1E93500A16D51 /* HistoryItemCell.xib */,
+			);
+			path = HistoryItemCell;
 			sourceTree = "<group>";
 		};
 		AECEC18227BBDB99002EB9CE = {
@@ -670,6 +684,7 @@
 				AE8B04E727C11D5500A16D51 /* BalancesContainer.xib in Resources */,
 				AE8B04DB27C10A1A00A16D51 /* Colors.xcassets in Resources */,
 				AECEC19B27BBDBA0002EB9CE /* LaunchScreen.storyboard in Resources */,
+				AE8B051E27C1E93500A16D51 /* HistoryItemCell.xib in Resources */,
 				AE61932F27BEF68B00719E44 /* Localizable.strings in Resources */,
 				AECEC19827BBDBA0002EB9CE /* Assets.xcassets in Resources */,
 				AECEC19627BBDB99002EB9CE /* MainViewController.storyboard in Resources */,
@@ -821,6 +836,7 @@
 				AE61933527BEF84600719E44 /* LocalizationKeys.swift in Sources */,
 				AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */,
 				AE8B04E127C10C8000A16D51 /* Double+Extension.swift in Sources */,
+				AE8B051C27C1E92800A16D51 /* HistoryItemCell.swift in Sources */,
 				AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */,
 				AE61934827BF057200719E44 /* SingleState.swift in Sources */,
 				AE8B050D27C1C31000A16D51 /* Fee.swift in Sources */,

@@ -11,16 +11,20 @@ import RxRelay
 final class MainViewModel: BaseViewModel {
     // MARK: - Services
     let balanceDataStore: BalanceDataStoreProtocol
+    let historyDataStore: HistoryServiceProtocol
     
     // MARK: - Output
     let onSuccess: PublishRelay<String> = .init()
     let currentBalance: BehaviorRelay<String?> = .init(value: nil)
     let otherBalances: BehaviorRelay<[Balance]> = .init(value: [])
+    let transactionsHistory: BehaviorRelay<[Transaction]> = .init(value: [])
     
     init(
-        balanceDataStore: BalanceDataStoreProtocol
+        balanceDataStore: BalanceDataStoreProtocol,
+        historyDataStore: HistoryServiceProtocol
     ) {
         self.balanceDataStore = balanceDataStore
+        self.historyDataStore = historyDataStore
         
         super.init()
         
@@ -37,6 +41,7 @@ extension MainViewModel {
         
         self.currentBalance.accept(currentBalance?.nameWithSymbol)
         self.otherBalances.accept(otherBalances)
+        self.transactionsHistory.accept(historyDataStore.getHistory())
     }
 }
 

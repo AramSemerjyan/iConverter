@@ -15,6 +15,8 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var currentBalanceTitle: UILabel!
     @IBOutlet weak var currentBalance: UILabel!
     @IBOutlet weak var balancesContainer: BalancesContainer!
+    @IBOutlet weak var historyContainer: UIView!
+    @IBOutlet weak var historyTableVeiw: UITableView!
     
     // MARK: - View Model
     var viewModel: MainViewModel!
@@ -29,6 +31,8 @@ class MainViewController: BaseViewController {
         super.setUpViews()
         
         setUpCurrentBalanceViews()
+        setUpHistoryContainer()
+        setUpTableView()
     }
     
     @IBAction func addNewTransaction(_ sender: UIButton) {
@@ -59,6 +63,22 @@ private extension MainViewController {
             .subscribe(onNext: { [balancesContainer] balances in
                 balancesContainer?.updateBalances(balances)
             }).disposed(by: rx.disposeBag)
+        
+        viewModel.transactionsHistory
+            .observe(on: MainScheduler.instance)
+            .bind(to: historyTableVeiw.rx.items) { tv, row, transaction in
+                guard let cell = tv.dequeueReusableCell(
+                    withIdentifier: HistoryItemCell.name,
+                    for: .init(row: row, section: 0)) as? HistoryItemCell
+                else {
+                    return UITableViewCell()
+                }
+
+                cell.configure(with: transaction)
+                cell.selectionStyle = .none
+
+                return cell
+            }.disposed(by: rx.disposeBag)
     }
 }
 
@@ -67,5 +87,16 @@ private extension MainViewController {
     func setUpCurrentBalanceViews() {
         currentBalanceTitle.textColor = .descriptionTextColor
         currentBalance.textColor = .mainTextColor
+    }
+    
+    func setUpHistoryContainer() {
+        historyContainer.clipsToBounds = true
+        historyContainer.layer.cornerRadius = 20
+        historyContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }
+    
+    func setUpTableView() {
+        let nib = UINib(nibName: HistoryItemCell.name, bundle: nil)
+        historyTableVeiw.register(nib, forCellReuseIdentifier: HistoryItemCell.name)
     }
 }
