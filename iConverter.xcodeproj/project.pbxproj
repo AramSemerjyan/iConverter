@@ -192,7 +192,8 @@
 		AE61932327BEEDAA00719E44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AE8B051427C1C46300A16D51 /* HistoryService */,
+				AEA783B627C2FFC70097A2D9 /* BalanceDataStore */,
+				AE8B051427C1C46300A16D51 /* HistoryDataStore */,
 				AE8B04CF27C0F8BE00A16D51 /* DB */,
 				AE8B04CC27C037A900A16D51 /* Converter */,
 				AE61933627BEFB5D00719E44 /* Networking */,
@@ -389,7 +390,6 @@
 		AE8B04CF27C0F8BE00A16D51 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */,
 				AE8B04E227C1111800A16D51 /* LocalDB.swift */,
 			);
 			path = DB;
@@ -481,12 +481,12 @@
 			path = Transaction;
 			sourceTree = "<group>";
 		};
-		AE8B051427C1C46300A16D51 /* HistoryService */ = {
+		AE8B051427C1C46300A16D51 /* HistoryDataStore */ = {
 			isa = PBXGroup;
 			children = (
 				AE8B051527C1C47100A16D51 /* HistoryDataStore.swift */,
 			);
-			path = HistoryService;
+			path = HistoryDataStore;
 			sourceTree = "<group>";
 		};
 		AE8B051727C1C70600A16D51 /* Constants */ = {
@@ -512,6 +512,14 @@
 				AE8B052027C1EF8400A16D51 /* iConverterFormater.swift */,
 			);
 			path = Formater;
+			sourceTree = "<group>";
+		};
+		AEA783B627C2FFC70097A2D9 /* BalanceDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */,
+			);
+			path = BalanceDataStore;
 			sourceTree = "<group>";
 		};
 		AECEC18227BBDB99002EB9CE = {
