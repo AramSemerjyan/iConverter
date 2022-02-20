@@ -55,11 +55,13 @@ private extension MainViewController {
         viewModel
             .currentBalance
             .filterNil()
+            .observe(on: MainScheduler.instance)
             .bind(to: currentBalance.rx.text)
             .disposed(by: rx.disposeBag)
         
         viewModel
             .otherBalances
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [balancesContainer] balances in
                 balancesContainer?.updateBalances(balances)
             }).disposed(by: rx.disposeBag)

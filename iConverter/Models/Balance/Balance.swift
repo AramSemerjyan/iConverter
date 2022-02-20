@@ -11,11 +11,15 @@ struct Balance {
     let currency: Currency
     let amount: Double
     
-    var nameWithSymbol: String { "\(currency.symbol) \(amount.toString())" }
+    var nameWithSymbol: String { "\(currency.symbol) " + String(format: "%.2f", amount) }
     var nameWithCurrency: String { "\(amount.toString()) \(currency.symbol)" }
 }
 
 extension Balance {
+    static func empty() -> Balance {
+        .init(currency: .usd, amount: 0.0)
+    }
+    
     func copy(
         currency: Currency? = nil,
         amount: Double? = nil

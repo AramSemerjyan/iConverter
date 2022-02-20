@@ -28,19 +28,7 @@ final class MainViewModel: BaseViewModel {
         
         super.init()
         
-        initData()
         doBindings()
-    }
-}
-
-// MARK: - Init data
-extension MainViewModel {
-    func initData() {
-        let currentBalance = balanceDataStore.getCurrentBalance()
-        let otherBalances = balanceDataStore.getOtherBalances()
-        
-        self.currentBalance.accept(currentBalance?.nameWithSymbol)
-        self.otherBalances.accept(otherBalances)
     }
 }
 
@@ -49,6 +37,15 @@ extension MainViewModel {
     func doBindings() {
         historyDataStore.history
             .bind(to: transactionsHistory)
+            .disposed(by: disposeBag)
+        
+        balanceDataStore.currenBalance
+            .map { $0.nameWithSymbol }
+            .bind(to: currentBalance)
+            .disposed(by: disposeBag)
+        
+        balanceDataStore.otherBalances
+            .bind(to: otherBalances)
             .disposed(by: disposeBag)
     }
 }

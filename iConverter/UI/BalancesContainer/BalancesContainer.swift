@@ -51,8 +51,7 @@ private extension BalancesContainer {
             owner: nil,
             options: nil)?.first as? BalanceItem else { return nil }
         
-        item.balanceCurrencyTitle.text = balance.currency.rawValue
-        item.balanceCurrencyValue.text = balance.amount.toString()
+        item.configure(balance)
         
         return item
     }

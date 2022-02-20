@@ -11,4 +11,9 @@ import UIKit
 final class BalanceItem: UIView {
     @IBOutlet weak var balanceCurrencyTitle: UILabel!
     @IBOutlet weak var balanceCurrencyValue: UILabel!
+    
+    func configure(_ balance: Balance) {
+        balanceCurrencyTitle.text = balance.currency.rawValue
+        balanceCurrencyValue.text = iConverterFormater.round(balance.amount)
+    }
 }

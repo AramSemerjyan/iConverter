@@ -19,17 +19,11 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obb-q6-eFN">
                         <rect key="frame" x="8" y="5" width="50" height="43"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="43" id="rca-u7-nbI"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq7-OA-IEU">
                         <rect key="frame" x="344" y="5" width="50" height="43"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="43" id="YG7-oy-Wez"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <color key="textColor" name="errorColor"/>
                         <nil key="highlightedColor"/>
@@ -103,10 +97,10 @@
     </objects>
     <resources>
         <namedColor name="errorColor">
-            <color red="0.87201648950576782" green="0.2254822701215744" blue="0.10340011864900589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.87199997901916504" green="0.22499999403953552" blue="0.10300000011920929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="successColor">
-            <color red="0.19517205655574799" green="0.78464174270629883" blue="0.097509235143661499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19499999284744263" green="0.7850000262260437" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

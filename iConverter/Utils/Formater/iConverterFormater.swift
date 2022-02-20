@@ -14,14 +14,14 @@ final class iConverterFormater {
         return "Fee: \(fee)"
     }
     
-//    static func transactionResult(_ transaction: Transaction) -> String {
-//
-//    }
-    
     static func dateFormater(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm E, d MMM y"
         
         return formatter.string(from: date)
+    }
+    
+    static func round(_ value: Double) -> String {
+        String(format: "%.3f", value)
     }
 }

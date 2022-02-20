@@ -56,13 +56,21 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
 extension ConverterService {
     func doBindings() {
         let checkRequest = convert
-            .map { [weak self] request -> Transaction? in
-                if let error = self?.validate(request) {
+            .withLatestFrom(balanceDataStore.allBalancies) { transaction, balancies -> (transaction: Transaction, balance: Balance)? in
+                let balance = balancies.first { $0.currency == transaction.fromCurrency }
+                guard let balance = balance else {
+                    return nil
+                }
+                return (transaction, balance)
+            }
+            .filterNil()
+            .map { [weak self] t -> Transaction? in
+                if let error = self?.validate(t.transaction, balance: t.balance) {
                     self?.onError.accept(error)
                     return nil
                 }
                 
-                return request
+                return t.transaction
             }
             .filterNil()
         
@@ -86,7 +94,8 @@ extension ConverterService {
         
         transaction
             .subscribe(onNext: { [balanceDataStore] t in
-                balanceDataStore.update(with: t)
+                balanceDataStore.updateBalance.accept(t)
+                balanceDataStore.update.accept(())
             }).disposed(by: disposeBag)
         
         transaction
@@ -106,7 +115,7 @@ extension ConverterService {
 
 // MARK: - validations
 private extension ConverterService {
-    func validate(_ request: Transaction) -> String? {
+    func validate(_ request: Transaction, balance: Balance) -> String? {
         if let error = converterValidator.validateCurrencies(fromCurrency: request.fromCurrency, toCurrency: request.toCurrency) {
             onError.accept(error)
             return error
@@ -115,8 +124,6 @@ private extension ConverterService {
         if let error = converterValidator.validateEmptyAmount(amount: request.original) {
             return error
         }
-        
-        let balance = balanceDataStore.getBalance(for: request.fromCurrency)
         
         if let error = converterValidator.validateBalance(transactionAmount: request.original, balance: balance.amount) {
             return error
