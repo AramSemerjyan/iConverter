@@ -9,14 +9,18 @@ import Foundation
 import RxRelay
 import NSObject_Rx
 
-protocol BalanceDataStoreProtocol {
-    var update: PublishRelay<Void> { get }
+protocol BalanceDataStoreActionsProtocol {
+    func update(withTransaction transaction: Transaction)
+}
+
+protocol BalanceDataStoreObserveProtocol {
     var currenBalance: BehaviorRelay<Balance> { get }
-    var updateBalance: PublishRelay<Transaction> { get }
     var otherBalances: BehaviorRelay<[Balance]> { get }
     var currentCurrency: BehaviorRelay<Currency> { get }
     var allBalancies: BehaviorRelay<[Balance]> { get }
 }
+
+protocol BalanceDataStoreProtocol: BalanceDataStoreActionsProtocol, BalanceDataStoreObserveProtocol { }
 
 final class BalanceDataStore: BalanceDataStoreProtocol, HasDisposeBag {
     // MARK: - service
@@ -41,15 +45,25 @@ final class BalanceDataStore: BalanceDataStoreProtocol, HasDisposeBag {
     }
 }
 
-private extension BalanceDataStore {
+extension BalanceDataStore: BalanceDataStoreActionsProtocol {
     func getBalance(for currency: Currency) -> Balance {
         guard let balanceAmount = db.get(for: currency.rawValue) as? Double else {
             return .init(currency: currency, amount: 0.0)
         }
-        
+
         return Balance(currency: currency, amount: balanceAmount)
     }
-    
+
+    func update(withTransaction transaction: Transaction) {
+        let fromBalance = self.getBalance(for: transaction.fromCurrency)
+        let toBalance = self.getBalance(for: transaction.toCurrency)
+
+        self.updateBalance(fromBalance.copy(amount: fromBalance.amount - transaction.priceWithFee))
+        self.updateBalance(toBalance.copy(amount: toBalance.amount + (transaction.converted ?? 0.0)))
+
+        update.accept(())
+    }
+
     func updateBalance(_ balance: Balance) {
         db.set(data: balance.amount, for: balance.currency.rawValue)
     }
@@ -101,20 +115,5 @@ private extension BalanceDataStore {
             }
             .bind(to: otherBalances)
             .disposed(by: disposeBag)
-        
-        updateBalance
-            .subscribe(onNext: { [weak self] transaction in
-                guard let fromBalance = self?.getBalance(for: transaction.fromCurrency) else {
-                    return
-                }
-                
-                self?.updateBalance(fromBalance.copy(amount: fromBalance.amount - transaction.priceWithFee))
-                
-                guard let toBalance = self?.getBalance(for: transaction.toCurrency) else {
-                    return
-                }
-                
-                self?.updateBalance(toBalance.copy(amount: toBalance.amount + (transaction.converted ?? 0.0)))
-            }).disposed(by: disposeBag)
     }
 }

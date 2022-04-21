@@ -9,5 +9,3 @@ struct ConvertResponse: Decodable {
     let amount: String
     let currency: Currency
 }
-
-typealias ConvertState = SingleState<ConvertResponse>

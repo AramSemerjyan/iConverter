@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwinjectAutoregistration
 import RxSwift
 
 class MainViewController: BaseViewController {
@@ -20,11 +19,25 @@ class MainViewController: BaseViewController {
     
     // MARK: - View Model
     var viewModel: MainViewModel!
+    private var interactor: MainInteractor!
 
+    func makeDI(
+        viewModel: MainViewModel,
+        interactor: MainInteractor,
+        presenter: MainPresenter
+    ) {
+        self.viewModel = viewModel
+        self.interactor = interactor
+        presenter.vc = self
+        interactor.presenter = presenter
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         doBindings()
+
+        interactor.loadAndObserveData()
     }
     
     override func setUpViews() {
@@ -35,20 +48,14 @@ class MainViewController: BaseViewController {
         setUpTableView()
     }
     
-    @IBAction func addNewTransaction(_ sender: UIButton) {        
-        self.present(resolver ~> TransactionViewController.self, animated: true)
+    @IBAction func addNewTransaction(_ sender: UIButton) {
+        interactor.handleAddNewTransactionTap()
     }
 }
 
 // MARK: - do bindings
 private extension MainViewController {
     func doBindings() {
-        viewModel.onSuccess
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] message in
-                self?.showAlert(title: iConverterLocalization.appName, message: message)
-            }).disposed(by: rx.disposeBag)
-        
         viewModel
             .currentBalance
             .filterNil()

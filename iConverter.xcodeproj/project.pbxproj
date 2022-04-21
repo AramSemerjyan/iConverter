@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0532C872C3D61EB00D8C61B1 /* Pods_iConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3559EE05E010BF3CA9435C18 /* Pods_iConverter.framework */; };
 		9BA33F008DFAF77756F230F5 /* Pods_iConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E84A8BD5656535E253681DF /* Pods_iConverterTests.framework */; };
+		AE4BA10F281109EF00B81E7F /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BA10E281109EF00B81E7F /* APIRequest.swift */; };
 		AE61932927BEEF6C00719E44 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61932827BEEF6C00719E44 /* BaseViewController.swift */; };
 		AE61932F27BEF68B00719E44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE61933127BEF68B00719E44 /* Localizable.strings */; };
 		AE61933327BEF7ED00719E44 /* iConverterLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933227BEF7ED00719E44 /* iConverterLocalization.swift */; };
@@ -17,7 +18,6 @@
 		AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61933B27BF015E00719E44 /* ConvertResponse.swift */; };
 		AE61934227BF040700719E44 /* ConverterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934127BF040700719E44 /* ConverterApi.swift */; };
 		AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934427BF04A300719E44 /* BaseApiService.swift */; };
-		AE61934827BF057200719E44 /* SingleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934727BF057200719E44 /* SingleState.swift */; };
 		AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934B27BF05A900719E44 /* iConverterDecoder.swift */; };
 		AE61934F27BF066700719E44 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61934E27BF066700719E44 /* Endpoints.swift */; };
 		AE61935127BF076D00719E44 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935027BF076D00719E44 /* ServiceAssembly.swift */; };
@@ -28,6 +28,12 @@
 		AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61935C27BF0EBF00719E44 /* MainAssembly.swift */; };
 		AE61936127BF0F9D00719E44 /* ViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */; };
 		AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61936327BF10C100719E44 /* NSObject+Extension.swift */; };
+		AE653E542806E36A00562F01 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE653E532806E36A00562F01 /* MainRouter.swift */; };
+		AE653E562806E37200562F01 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE653E552806E37200562F01 /* MainInteractor.swift */; };
+		AE653E582806E37C00562F01 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE653E572806E37C00562F01 /* MainPresenter.swift */; };
+		AE653E5A2806E3A800562F01 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE653E592806E3A800562F01 /* Router.swift */; };
+		AE653E5C2806E76100562F01 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE653E5B2806E76100562F01 /* BasePresenter.swift */; };
+		AE653E5E2806E7DA00562F01 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE653E5D2806E7DA00562F01 /* BaseInteractor.swift */; };
 		AE8A94C727C21E3A0058B17B /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A94C627C21E3A0058B17B /* DI.swift */; };
 		AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04CD27C037C400A16D51 /* ConverterService.swift */; };
 		AE8B04D127C0F8CF00A16D51 /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */; };
@@ -62,6 +68,10 @@
 		AECEC1A627BBDBA1002EB9CE /* iConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1A527BBDBA1002EB9CE /* iConverterTests.swift */; };
 		AECEC1B027BBDBA1002EB9CE /* iConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1AF27BBDBA1002EB9CE /* iConverterUITests.swift */; };
 		AECEC1B227BBDBA1002EB9CE /* iConverterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEC1B127BBDBA1002EB9CE /* iConverterUITestsLaunchTests.swift */; };
+		AED50CEA2811BB2C0094585F /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED50CE92811BB2C0094585F /* TransactionRequest.swift */; };
+		AED50CEC2811BE380094585F /* iConverterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED50CEB2811BE380094585F /* iConverterError.swift */; };
+		AEFB127028075CDD00AE0340 /* TransactionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFB126F28075CDD00AE0340 /* TransactionInteractor.swift */; };
+		AEFB127228075CF100AE0340 /* TransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFB127128075CF100AE0340 /* TransactionPresenter.swift */; };
 		EBBF55B35EF4E1C775F05B89 /* Pods_iConverter_iConverterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D96E5391D619089E156AB80 /* Pods_iConverter_iConverterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +100,7 @@
 		3B7E4B8333FC017654394FFE /* Pods-iConverter-iConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iConverter-iConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-iConverter-iConverterUITests/Pods-iConverter-iConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D96E5391D619089E156AB80 /* Pods_iConverter_iConverterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iConverter_iConverterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E84A8BD5656535E253681DF /* Pods_iConverterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iConverterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4BA10E281109EF00B81E7F /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		AE61932827BEEF6C00719E44 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AE61933027BEF68B00719E44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE61933227BEF7ED00719E44 /* iConverterLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterLocalization.swift; sourceTree = "<group>"; };
@@ -98,7 +109,6 @@
 		AE61933B27BF015E00719E44 /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		AE61934127BF040700719E44 /* ConverterApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterApi.swift; sourceTree = "<group>"; };
 		AE61934427BF04A300719E44 /* BaseApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
-		AE61934727BF057200719E44 /* SingleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleState.swift; sourceTree = "<group>"; };
 		AE61934B27BF05A900719E44 /* iConverterDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterDecoder.swift; sourceTree = "<group>"; };
 		AE61934E27BF066700719E44 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		AE61935027BF076D00719E44 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
@@ -109,6 +119,12 @@
 		AE61935C27BF0EBF00719E44 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		AE61936027BF0F9D00719E44 /* ViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		AE61936327BF10C100719E44 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		AE653E532806E36A00562F01 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		AE653E552806E37200562F01 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		AE653E572806E37C00562F01 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		AE653E592806E3A800562F01 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AE653E5B2806E76100562F01 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		AE653E5D2806E7DA00562F01 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		AE8A94C627C21E3A0058B17B /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		AE8B04CD27C037C400A16D51 /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
 		AE8B04D027C0F8CF00A16D51 /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
@@ -147,6 +163,10 @@
 		AECEC1AB27BBDBA1002EB9CE /* iConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECEC1AF27BBDBA1002EB9CE /* iConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterUITests.swift; sourceTree = "<group>"; };
 		AECEC1B127BBDBA1002EB9CE /* iConverterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AED50CE92811BB2C0094585F /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
+		AED50CEB2811BE380094585F /* iConverterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iConverterError.swift; sourceTree = "<group>"; };
+		AEFB126F28075CDD00AE0340 /* TransactionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInteractor.swift; sourceTree = "<group>"; };
+		AEFB127128075CF100AE0340 /* TransactionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPresenter.swift; sourceTree = "<group>"; };
 		D342AA05FD9CD4DF708858D8 /* Pods-iConverter-iConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iConverter-iConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-iConverter-iConverterUITests/Pods-iConverter-iConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA30E3B116031CE2425EA2F6 /* Pods-iConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iConverter.debug.xcconfig"; path = "Target Support Files/Pods-iConverter/Pods-iConverter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +207,22 @@
 				3E84A8BD5656535E253681DF /* Pods_iConverterTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE331D9E280D695200E739A1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AEFB127128075CF100AE0340 /* TransactionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AE331D9F280D695900E739A1 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AEFB126F28075CDD00AE0340 /* TransactionInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		AE61932327BEEDAA00719E44 /* Services */ = {
@@ -239,6 +275,9 @@
 				AE61932827BEEF6C00719E44 /* BaseViewController.swift */,
 				AE61935A27BF0E2000719E44 /* BaseViewModel.swift */,
 				AEA783B427C2E40F0097A2D9 /* ViewTag.swift */,
+				AE653E592806E3A800562F01 /* Router.swift */,
+				AE653E5B2806E76100562F01 /* BasePresenter.swift */,
+				AE653E5D2806E7DA00562F01 /* BaseInteractor.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -246,6 +285,9 @@
 		AE61932B27BEEF7B00719E44 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AE653E522806E35800562F01 /* Routers */,
+				AE653E512806E34B00562F01 /* Interactor */,
+				AE653E502806E34500562F01 /* Presenter */,
 				AECEC19427BBDB99002EB9CE /* MainViewController.storyboard */,
 				AECEC19227BBDB99002EB9CE /* MainViewController.swift */,
 				AE61935727BF0DDA00719E44 /* MainViewModel.swift */,
@@ -302,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				AE61934427BF04A300719E44 /* BaseApiService.swift */,
+				AE4BA10E281109EF00B81E7F /* APIRequest.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -309,7 +352,7 @@
 		AE61934627BF056600719E44 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				AE61934727BF057200719E44 /* SingleState.swift */,
+				AED50CEB2811BE380094585F /* iConverterError.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -376,6 +419,30 @@
 				AE61936327BF10C100719E44 /* NSObject+Extension.swift */,
 			);
 			path = NSObject;
+			sourceTree = "<group>";
+		};
+		AE653E502806E34500562F01 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AE653E572806E37C00562F01 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AE653E512806E34B00562F01 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AE653E552806E37200562F01 /* MainInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		AE653E522806E35800562F01 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				AE653E532806E36A00562F01 /* MainRouter.swift */,
+			);
+			path = Routers;
 			sourceTree = "<group>";
 		};
 		AE8B04CC27C037A900A16D51 /* Converter */ = {
@@ -450,6 +517,8 @@
 		AE8B04F827C16BC400A16D51 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				AE331D9F280D695900E739A1 /* Interactor */,
+				AE331D9E280D695200E739A1 /* Presenter */,
 				AE8B04F927C16BD600A16D51 /* TransactionViewController.swift */,
 				AE8B04FB27C16BEE00A16D51 /* TransactionViewController.storyboard */,
 				AE8B04FD27C16BFC00A16D51 /* TransactionViewModel.swift */,
@@ -477,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				AE8B051227C1C40900A16D51 /* Transaction.swift */,
+				AED50CE92811BB2C0094585F /* TransactionRequest.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -842,34 +912,43 @@
 			files = (
 				AE61935327BF07C800719E44 /* iConverterEncoder.swift in Sources */,
 				AE61934227BF040700719E44 /* ConverterApi.swift in Sources */,
+				AE653E562806E37200562F01 /* MainInteractor.swift in Sources */,
+				AEFB127228075CF100AE0340 /* TransactionPresenter.swift in Sources */,
 				AE8B04D127C0F8CF00A16D51 /* BalanceDataStore.swift in Sources */,
 				AE8B04DE27C10B3300A16D51 /* UIColor+Extension.swift in Sources */,
 				AE8B04EC27C11DE300A16D51 /* BalanceItem.swift in Sources */,
 				AE8B04E927C11D6100A16D51 /* BalancesContainer.swift in Sources */,
+				AEFB127028075CDD00AE0340 /* TransactionInteractor.swift in Sources */,
 				AE61933927BEFF3400719E44 /* Currency.swift in Sources */,
 				AEA783B527C2E40F0097A2D9 /* ViewTag.swift in Sources */,
 				AE61934F27BF066700719E44 /* Endpoints.swift in Sources */,
 				AE8A94C727C21E3A0058B17B /* DI.swift in Sources */,
+				AE653E5C2806E76100562F01 /* BasePresenter.swift in Sources */,
 				AE61935127BF076D00719E44 /* ServiceAssembly.swift in Sources */,
 				AE61935B27BF0E2000719E44 /* BaseViewModel.swift in Sources */,
+				AE653E5E2806E7DA00562F01 /* BaseInteractor.swift in Sources */,
 				AE8B04E327C1111800A16D51 /* LocalDB.swift in Sources */,
 				AE61935627BF0A3000719E44 /* AppConfigs.swift in Sources */,
 				AE8B052127C1EF8400A16D51 /* iConverterFormater.swift in Sources */,
 				AE61933C27BF015E00719E44 /* ConvertResponse.swift in Sources */,
 				AE8B051627C1C47100A16D51 /* HistoryDataStore.swift in Sources */,
 				AE8B04CE27C037C400A16D51 /* ConverterService.swift in Sources */,
+				AE653E582806E37C00562F01 /* MainPresenter.swift in Sources */,
 				AE61935827BF0DDA00719E44 /* MainViewModel.swift in Sources */,
 				AE8B051927C1C71500A16D51 /* iConverterConstants.swift in Sources */,
+				AE653E5A2806E3A800562F01 /* Router.swift in Sources */,
 				AE8B050827C1987900A16D51 /* ConverterValidator.swift in Sources */,
 				AE61933527BEF84600719E44 /* LocalizationKeys.swift in Sources */,
 				AE61934C27BF05A900719E44 /* iConverterDecoder.swift in Sources */,
 				AE8B04E127C10C8000A16D51 /* Double+Extension.swift in Sources */,
+				AE4BA10F281109EF00B81E7F /* APIRequest.swift in Sources */,
 				AE8B051C27C1E92800A16D51 /* HistoryItemCell.swift in Sources */,
 				AE61934527BF04A300719E44 /* BaseApiService.swift in Sources */,
-				AE61934827BF057200719E44 /* SingleState.swift in Sources */,
 				AE8B050D27C1C31000A16D51 /* Fee.swift in Sources */,
 				AE8B051327C1C40900A16D51 /* Transaction.swift in Sources */,
+				AE653E542806E36A00562F01 /* MainRouter.swift in Sources */,
 				AE61935D27BF0EBF00719E44 /* MainAssembly.swift in Sources */,
+				AED50CEC2811BE380094585F /* iConverterError.swift in Sources */,
 				AE8B04D927C107A300A16D51 /* Balance.swift in Sources */,
 				AECEC19327BBDB99002EB9CE /* MainViewController.swift in Sources */,
 				AE61932927BEEF6C00719E44 /* BaseViewController.swift in Sources */,
@@ -881,6 +960,7 @@
 				AE61933327BEF7ED00719E44 /* iConverterLocalization.swift in Sources */,
 				AE61936427BF10C100719E44 /* NSObject+Extension.swift in Sources */,
 				AE8B04FA27C16BD600A16D51 /* TransactionViewController.swift in Sources */,
+				AED50CEA2811BB2C0094585F /* TransactionRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,6 +1148,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7A6XYBD38D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iConverter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1096,6 +1177,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7A6XYBD38D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iConverter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

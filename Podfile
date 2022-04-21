@@ -5,7 +5,6 @@ def reactive
   pod 'RxSwift',             '~> 6.2.0'
   pod 'RxCocoa',             '~> 6.2.0'
   pod 'RxAlamofire',         '~> 6.1.1'
-  pod 'RxRestClient',        '~> 3.0.0'
   pod 'RxOptional',          '~> 5.0.1'
   pod 'RxSwiftExt',          '~> 6.0.1'
   pod 'NSObject+Rx',
