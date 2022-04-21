@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import NSObject_Rx
 import RxRelay
+import NSObject_Rx
 
 protocol ConverterServiceProtocol {
     func convert(transaction: Transaction) async throws -> Transaction
