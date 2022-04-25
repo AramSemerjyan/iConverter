@@ -36,26 +36,14 @@ extension MainInteractor {
 // MARK: - private data manipulation
 private extension MainInteractor {
     func loadHistory() {
-        historyDataStore.history
-            .subscribe(onNext: { [presenter] history in
-                presenter?.show(history: history)
-            }).disposed(by: disposeBag)
+        presenter.obser(history: historyDataStore.history)
     }
 
     func loadCurrentBalance() {
-        balanceDataStore.currenBalance
-            .map { $0.nameWithSymbol }
-            .subscribe(onNext: { [presenter] currentBalance in
-                presenter?.show(currentBalance: currentBalance)
-            })
-            .disposed(by: disposeBag)
+        presenter.obser(currentBalance: balanceDataStore.currenBalance)
     }
 
     func loadOtherBalances() {
-        balanceDataStore.otherBalances
-            .subscribe(onNext: { [presenter] otherBalance in
-                presenter?.show(otherBalance: otherBalance)
-            })
-            .disposed(by: disposeBag)
+        presenter.obser(otherBalance: balanceDataStore.otherBalances)
     }
 }

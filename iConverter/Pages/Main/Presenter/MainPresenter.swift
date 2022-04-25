@@ -19,16 +19,16 @@ final class MainPresenter: BasePresenter {
         super.init()
     }
 
-    func show(history: [Transaction]) {
-        vc?.viewModel.transactionsHistory.accept(history)
+    func obser(history: BehaviorRelay<[Transaction]>) {
+        vc?.viewModel.bind(history: history)
     }
 
-    func show(currentBalance: String) {
-        vc?.viewModel.currentBalance.accept(currentBalance)
+    func obser(currentBalance: BehaviorRelay<Balance>) {
+        vc?.viewModel.bind(currentBalance: currentBalance)
     }
 
-    func show(otherBalance: [Balance]) {
-        vc?.viewModel.otherBalances.accept(otherBalance)
+    func obser(otherBalance: BehaviorRelay<[Balance]>) {
+        vc?.viewModel.bind(otherBalances: otherBalance)
     }
 
     func openAddNewTransaction() {
