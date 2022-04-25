@@ -19,15 +19,15 @@ final class MainPresenter: BasePresenter {
         super.init()
     }
 
-    func obser(history: BehaviorRelay<[Transaction]>) {
+    func obserHistory(_ history: BehaviorRelay<[Transaction]>) {
         vc?.viewModel.bind(history: history)
     }
 
-    func obser(currentBalance: BehaviorRelay<Balance>) {
+    func obserCurrentBalance(_ currentBalance: BehaviorRelay<Balance>) {
         vc?.viewModel.bind(currentBalance: currentBalance)
     }
 
-    func obser(otherBalance: BehaviorRelay<[Balance]>) {
+    func obserOtherBalances(_ otherBalance: BehaviorRelay<[Balance]>) {
         vc?.viewModel.bind(otherBalances: otherBalance)
     }
 

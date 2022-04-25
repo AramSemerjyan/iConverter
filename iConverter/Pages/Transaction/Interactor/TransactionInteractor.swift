@@ -25,28 +25,24 @@ final class TransactionInteractor: BaseInteractor {
         super.init()
     }
 
-    func makeA(transaction: Transaction) {
+    func makeTransaction(_ transaction: Transaction) {
         presenter.startLoading()
 
         Task {
             do {
                 let transaction = try await converterService.convert(transaction: transaction)
-                await presenter.onSuccess(transaction: transaction)
+                await presenter.onTransactionSuccess(transaction)
             } catch {
                 await presenter?.show(error: error.localizedDescription)
             }
         }
     }
 
-    func update(fromCurrency index: Int) {
-        presenter.update(fromCurrency: index)
+    func updateFromCurrency(_ index: Int) {
+        presenter.updateFromCurrency(index)
     }
 
-    func update(toCurrency index: Int) {
-        presenter.update(toCurrency: index)
-    }
-
-    func update(amount: String) {
-
+    func updateToCurrency(_ index: Int) {
+        presenter.updateToCurrency(index)
     }
 }

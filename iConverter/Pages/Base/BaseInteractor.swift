@@ -14,6 +14,4 @@ class BaseInteractor {
         print("Interactor deinited")
         print("********")
     }
-
-    var disposeBag = DisposeBag()
 }

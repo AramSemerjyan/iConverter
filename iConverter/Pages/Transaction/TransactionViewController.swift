@@ -90,7 +90,7 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.currencyOptions)
             .subscribe(onNext: { [weak self] options in
                 self?.showActionSheet(actions: options.map { $0.rawValue }, onSelect: { index in
-                    self?.interactor.update(fromCurrency: index)
+                    self?.interactor.updateFromCurrency(index)
                 })
             }).disposed(by: rx.disposeBag)
         
@@ -98,7 +98,7 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.currencyOptions)
             .subscribe(onNext: { [weak self] options in
                 self?.showActionSheet(actions: options.map { $0.rawValue }, onSelect: { index in
-                    self?.interactor.update(toCurrency: index)
+                    self?.interactor.updateToCurrency(index)
 
                 })
             }).disposed(by: rx.disposeBag)
@@ -126,8 +126,8 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.selectedToCurrency) { (amount: $0, to: $1) }
             .withLatestFrom(viewModel.selectedFromCurrency) { (amount: $0.amount, from: $1, to: $0.to) }
             .subscribe(onNext: { [interactor] t in
-                interactor?.makeA(
-                    transaction: .createWith(
+                interactor?.makeTransaction(
+                    .createWith(
                         amount: t.amount.toDouble(),
                         fromCurrency: t.from,
                         toCurrencty: t.to
