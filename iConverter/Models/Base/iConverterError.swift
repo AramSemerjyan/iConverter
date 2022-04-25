@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum iConverterError: Error {
+enum iConverterError {
     enum General: Error {
         case somethingWentWrong
         case canNotBeEmpty
