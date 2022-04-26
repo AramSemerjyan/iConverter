@@ -11,7 +11,7 @@ import SwinjectAutoregistration
 final class ServiceAssembly: Assembly {
     func assemble(container: Container) {
         container.register(BaseAPIService.self) { _ in
-                .init(baseURL: AppConfigs.dev.converterBaseUrl)
+            .init(baseURL: AppConfigs.dev.converterBaseUrl)
         }
         container.autoregister(ConverterAPIServiceProtocol.self, initializer: ConverterAPIService.init)
         container.autoregister(ConverterServiceProtocol.self, initializer: ConverterService.init)

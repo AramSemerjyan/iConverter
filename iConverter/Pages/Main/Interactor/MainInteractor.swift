@@ -33,10 +33,10 @@ final class MainInteractor: BaseInteractor {
 // MARK: - private data manipulation
 private extension MainInteractor {
     func loadCurrentBalance() {
-        presenter.obser(currentBalance: balanceDataStore.currenBalance)
+        presenter.obserCurrentBalance(balanceDataStore.currenBalance)
     }
 
     func loadOtherBalances() {
-        presenter.obser(otherBalance: balanceDataStore.otherBalances)
+        presenter.obserOtherBalances(balanceDataStore.otherBalances)
     }
 }

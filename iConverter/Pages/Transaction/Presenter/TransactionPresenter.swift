@@ -24,7 +24,7 @@ final class TransactionPresenter: BasePresenter {
     }
 
     @MainActor
-    func onSuccess(transaction: Transaction) {
+    func onTransactionSuccess(_ transaction: Transaction) {
         resetError()
         stopLoading()
         
@@ -33,16 +33,12 @@ final class TransactionPresenter: BasePresenter {
         viewModel?.onSuccess.accept(successMessage)
     }
 
-    func update(fromCurrency index: Int) {
+    func updateFromCurrency(_ index: Int) {
         viewModel?.selectedFromCurrency.accept(currencyOptions[index])
     }
 
-    func update(toCurrency index: Int) {
+    func updateToCurrency(_ index: Int) {
         viewModel?.selectedToCurrency.accept(currencyOptions[index])
-    }
-
-    func update(amount: String) {
-        viewModel?.amount.accept(amount)
     }
 
     func startLoading() {
