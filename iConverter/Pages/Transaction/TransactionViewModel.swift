@@ -28,7 +28,6 @@ class TransactionViewModel: BaseViewModel {
     let stopLoading: PublishRelay<Void> = .init()
 
     let currencyOptionsUpdated: [Currency] = Currency.allCases
-    var transactionUpdated: Transaction = .empty()
 
     init(converterService: ConverterServiceProtocol) {
         self.converterService = converterService
@@ -51,7 +50,7 @@ private extension TransactionViewModel {
                 .withLatestFrom(transaction) { amount, transaction in transaction.copy(original: amount.toDouble()) }
         ])
             .subscribe(onNext: { [weak self] updatedTransaction in
-                self?.transactionUpdated = updatedTransaction
+                //self?.transactionUpdated = updatedTransaction
             })
         .disposed(by: disposeBag)
     }

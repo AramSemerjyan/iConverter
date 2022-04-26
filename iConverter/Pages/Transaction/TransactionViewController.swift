@@ -155,3 +155,11 @@ private extension TransactionViewController {
         }).disposed(by: rx.disposeBag)
     }
 }
+
+extension Reactive where Base: TransactionViewController {
+    var transactionUpdated: Observable<Void> {
+        base.viewModel.onSuccess
+            .map { _ in Void() }
+            .asObservable()
+    }
+}

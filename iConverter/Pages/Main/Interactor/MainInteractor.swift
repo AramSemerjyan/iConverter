@@ -24,21 +24,14 @@ final class MainInteractor: BaseInteractor {
         loadCurrentBalance()
         loadOtherBalances()
     }
-}
-
-// MARK: - tap handler
-extension MainInteractor {
-    func handleAddNewTransactionTap() {
-        presenter.openAddNewTransaction()
+    
+    func loadHistory() {
+        presenter.showTransactions(historyDataStore.loadTransactions())
     }
 }
 
 // MARK: - private data manipulation
 private extension MainInteractor {
-    func loadHistory() {
-        presenter.obser(history: historyDataStore.history)
-    }
-
     func loadCurrentBalance() {
         presenter.obser(currentBalance: balanceDataStore.currenBalance)
     }

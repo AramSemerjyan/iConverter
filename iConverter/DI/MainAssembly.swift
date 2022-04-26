@@ -21,7 +21,8 @@ final class MainAssembly: Assembly {
             controller.makeDI(
                 viewModel: r ~> MainViewModel.self,
                 interactor: r ~> MainInteractor.self,
-                presenter: r ~> MainPresenter.self
+                presenter: r ~> MainPresenter.self,
+                router: r ~> MainRouter.self
             )
 
             return controller

@@ -10,29 +10,16 @@ import RxRelay
 import NSObject_Rx
 
 protocol HistoryDataStoreProtocol {
-    var updateHistory: PublishRelay<Void> { get }
-    var history: BehaviorRelay<[Transaction]> { get }
-
     func save(transaction: Transaction)
+    func loadTransactions() -> [Transaction]
 }
 
-final class HistoryDataStore: HistoryDataStoreProtocol, HasDisposeBag {
+final class HistoryDataStore: HistoryDataStoreProtocol {
     // MARK: - services
-    let localDB: LocalDBProtocol
-    
-    // MARK: - inputs
-    let saveTransaction: PublishRelay<Transaction> = .init()
-    let updateHistory: PublishRelay<Void> = .init()
-    
-    // MARK: - outputs
-    let history: BehaviorRelay<[Transaction]> = .init(value: [])
+    private let localDB: LocalDBProtocol
     
     init(localDB: LocalDBProtocol) {
         self.localDB = localDB
-        
-        doBindings()
-        
-        updateHistory.accept(())
     }
 
     func save(transaction: Transaction) {
@@ -55,29 +42,15 @@ final class HistoryDataStore: HistoryDataStoreProtocol, HasDisposeBag {
         }
 
         localDB.set(data: data, for: DBKeys.transactionHistory.rawValue)
-
-        updateHistory.accept(())
     }
-}
-
-// MARK: - do bindings
-private extension HistoryDataStore {
-    func doBindings() {
-        updateHistory
-            .map { [localDB] in
-                guard let data = localDB.get(for: DBKeys.transactionHistory.rawValue) as? Data else {
-                    return []
-                }
-                
-                if let decoded = try? iConverterDecoder().decode([Transaction].self, from: data) {
-                    return decoded.sorted { a, b in
-                        a.createdDate > b.createdDate
-                    }
-                }
-            
-                return []
-            }
-            .bind(to: history)
-            .disposed(by: disposeBag)
+    
+    func loadTransactions() -> [Transaction] {
+        guard
+            let data = localDB.get(for: DBKeys.transactionHistory.rawValue) as? Data,
+            let decoded = try? iConverterDecoder().decode([Transaction].self, from: data)
+        else {
+            return []
+        }
+        return decoded
     }
 }

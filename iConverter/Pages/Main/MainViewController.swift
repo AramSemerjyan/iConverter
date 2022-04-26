@@ -21,14 +21,17 @@ class MainViewController: BaseViewController {
     // MARK: - View Model
     var viewModel: MainViewModel!
     private var interactor: MainInteractor!
+    private var router: MainRouter!
 
     func makeDI(
         viewModel: MainViewModel,
         interactor: MainInteractor,
-        presenter: MainPresenter
+        presenter: MainPresenter,
+        router: MainRouter
     ) {
         self.viewModel = viewModel
         self.interactor = interactor
+        self.router = router
         presenter.vc = self
         interactor.presenter = presenter
     }
@@ -50,7 +53,10 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func addNewTransaction(_ sender: UIButton) {
-        interactor.handleAddNewTransactionTap()
+        router.openAddNewTransaction()
+            .rx.transactionUpdated
+            .bind(to: viewModel.transactionsUpdated)
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -86,6 +92,12 @@ private extension MainViewController {
 
                 return cell
             }.disposed(by: rx.disposeBag)
+        
+        viewModel.transactionsUpdated
+            .bind { [interactor] in
+                interactor?.loadHistory()
+            }
+            .disposed(by: rx.disposeBag)
     }
 }
 
