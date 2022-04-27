@@ -11,25 +11,25 @@ import NSObject_Rx
 
 protocol HistoryDataStoreProtocol {
     func save(transaction: Transaction)
-    func loadTransactions() -> [Transaction]
+    func loadHistory() -> [Transaction]
 }
 
-final class HistoryDataStore: HistoryDataStoreProtocol {
+final class HistoryDataStore {
     // MARK: - services
-    private let localDB: LocalDBProtocol
+    let localDB: LocalDBProtocol
     
     init(localDB: LocalDBProtocol) {
         self.localDB = localDB
     }
+}
 
+extension HistoryDataStore: HistoryDataStoreProtocol {
     func save(transaction: Transaction) {
-        guard let data = localDB.get(for: DBKeys.transactionHistory.rawValue) as? Data else {
-            return
-        }
+        let data = localDB.get(for: DBKeys.transactionHistory.rawValue) as? Data
 
         var history: [Transaction] = []
 
-        if let decoded = try? iConverterDecoder().decode([Transaction].self, from: data) {
+        if let data = data, let decoded = try? iConverterDecoder().decode([Transaction].self, from: data) {
             history = decoded.sorted { a, b in
                 a.createdDate > b.createdDate
             }
@@ -43,14 +43,18 @@ final class HistoryDataStore: HistoryDataStoreProtocol {
 
         localDB.set(data: data, for: DBKeys.transactionHistory.rawValue)
     }
-    
-    func loadTransactions() -> [Transaction] {
-        guard
-            let data = localDB.get(for: DBKeys.transactionHistory.rawValue) as? Data,
-            let decoded = try? iConverterDecoder().decode([Transaction].self, from: data)
-        else {
+
+    func loadHistory() -> [Transaction] {
+        guard let data = localDB.get(for: DBKeys.transactionHistory.rawValue) as? Data else {
             return []
         }
-        return decoded
+
+        if let decoded = try? iConverterDecoder().decode([Transaction].self, from: data) {
+            return decoded.sorted { a, b in
+                a.createdDate > b.createdDate
+            }
+        }
+
+        return []
     }
 }

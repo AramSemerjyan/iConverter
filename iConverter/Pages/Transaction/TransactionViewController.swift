@@ -157,9 +157,9 @@ private extension TransactionViewController {
 }
 
 extension Reactive where Base: TransactionViewController {
-    var transactionUpdated: Observable<Void> {
-        base.viewModel.onSuccess
-            .map { _ in Void() }
-            .asObservable()
-    }
-}
+     var transactionUpdated: Observable<Void> {
+         base.viewModel.onSuccess
+             .map { _ in Void() }
+             .asObservable()
+     }
+ }

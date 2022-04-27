@@ -10,16 +10,23 @@ import RxRelay
 
 final class MainPresenter: BasePresenter {
     weak var vc: MainViewController?
+    private let router: MainRouter!
 
-    func showTransactions(_ transactions: [Transaction]) {
-        vc?.viewModel.transactionsHistory.accept(transactions)
+    init(router: MainRouter) {
+        self.router = router
+
+        super.init()
     }
 
-    func obserCurrentBalance(_ currentBalance: BehaviorRelay<Balance>) {
-        vc?.viewModel.bind(currentBalance: currentBalance)
+    func showHistory(_ history: [Transaction]) {
+        vc?.viewModel.transactionsHistory.accept(history)
     }
 
-    func obserOtherBalances(_ otherBalance: BehaviorRelay<[Balance]>) {
-        vc?.viewModel.bind(otherBalances: otherBalance)
+    func showCurrentBalance(_ currentBalance: Balance?) {
+        vc?.viewModel.currentBalance.accept(currentBalance)
+    }
+
+    func showOtherBalances(_ otherBalance: [Balance]) {
+        vc?.viewModel.otherBalances.accept(otherBalance)
     }
 }

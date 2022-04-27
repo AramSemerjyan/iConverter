@@ -23,7 +23,7 @@ final class FeeService: FeeServiceProtocol, HasDisposeBag {
     }
 
     func addFee(forTransaction transaction: Transaction) -> Transaction {
-        let history = historyService.loadTransactions()
+        let history = historyService.loadHistory()
         let updatedTransaction = transaction
 
         if history.count < iConverterConstants.freeOfFeeCount {

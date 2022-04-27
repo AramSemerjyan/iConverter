@@ -41,7 +41,7 @@ class MainViewController: BaseViewController {
 
         doBindings()
 
-        interactor.loadAndObserveData()
+        interactor.loadData()
     }
     
     override func setUpViews() {
@@ -55,7 +55,7 @@ class MainViewController: BaseViewController {
     @IBAction func addNewTransaction(_ sender: UIButton) {
         router.openAddNewTransaction()
             .rx.transactionUpdated
-            .bind(to: viewModel.transactionsUpdated)
+            .bind(to: viewModel.transactionUpdated)
             .disposed(by: rx.disposeBag)
     }
 }
@@ -65,6 +65,7 @@ private extension MainViewController {
     func doBindings() {
         viewModel
             .currentBalance
+            .map { $0?.nameWithSymbol }
             .filterNil()
             .observe(on: MainScheduler.instance)
             .bind(to: currentBalance.rx.text)
@@ -92,10 +93,10 @@ private extension MainViewController {
 
                 return cell
             }.disposed(by: rx.disposeBag)
-        
-        viewModel.transactionsUpdated
+
+        viewModel.transactionUpdated
             .bind { [interactor] in
-                interactor?.loadHistory()
+                interactor?.loadData()
             }
             .disposed(by: rx.disposeBag)
     }
