@@ -17,14 +17,12 @@ final class MainAssembly: Assembly {
         container.autoregister(MainPresenter.self, initializer: MainPresenter.init)
         container.autoregister(MainViewModel.self, initializer: MainViewModel.init)
         container.register(MainViewController.self) { r in
-            let controller = MainViewController.instantiate()
-            controller.makeDI(
+            let controller = MainViewController.init(
                 viewModel: r ~> MainViewModel.self,
                 interactor: r ~> MainInteractor.self,
                 presenter: r ~> MainPresenter.self,
                 router: r ~> MainRouter.self
             )
-
             return controller
         }
 
@@ -36,8 +34,7 @@ final class MainAssembly: Assembly {
             initializer: TransactionViewModel.init
         )
         container.register(TransactionViewController.self) { r in
-            let controller = TransactionViewController.instantiate()
-            controller.makeDI(
+            let controller = TransactionViewController.init(
                 viewModel: r ~> TransactionViewModel.self,
                 interactor: r ~> TransactionInteractor.self,
                 presenter: r ~> TransactionPresenter.self

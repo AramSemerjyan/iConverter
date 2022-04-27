@@ -74,6 +74,15 @@
         }
       },
       {
+        "package": "Stevia",
+        "repositoryURL": "https://github.com/freshOS/Stevia",
+        "state": {
+          "branch": null,
+          "revision": "a32dc3c015fe583080f4947edf795bced9a11108",
+          "version": "5.1.1"
+        }
+      },
+      {
         "package": "SwiftShell",
         "repositoryURL": "https://github.com/kareman/SwiftShell",
         "state": {
