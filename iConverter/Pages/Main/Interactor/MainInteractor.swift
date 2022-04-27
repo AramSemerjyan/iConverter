@@ -19,31 +19,22 @@ final class MainInteractor: BaseInteractor {
         self.balanceDataStore = balanceDataStore
     }
 
-    func loadAndObserveData() {
+    func loadData() {
         loadHistory()
         loadCurrentBalance()
         loadOtherBalances()
     }
-}
 
-// MARK: - tap handler
-extension MainInteractor {
-    func handleAddNewTransactionTap() {
-        presenter.openAddNewTransaction()
-    }
-}
-
-// MARK: - private data manipulation
-private extension MainInteractor {
     func loadHistory() {
-        presenter.obserHistory(historyDataStore.history)
+        presenter.showHistory(historyDataStore.loadHistory())
     }
 
     func loadCurrentBalance() {
-        presenter.obserCurrentBalance(balanceDataStore.currenBalance)
+        guard let currentBalance = balanceDataStore.loadCurrentBalance() else { return }
+        presenter.showCurrentBalance(currentBalance)
     }
 
     func loadOtherBalances() {
-        presenter.obserOtherBalances(balanceDataStore.otherBalances)
+        presenter.showOtherBalances(balanceDataStore.loadOtherBalances())
     }
 }

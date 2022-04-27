@@ -8,9 +8,12 @@
 import SwinjectAutoregistration
 
 final class MainRouter: Router {
-    func openAddNewTransaction() {
+    @discardableResult
+    func openAddNewTransaction() -> TransactionViewController {
         let newTransactionController = resolver ~> TransactionViewController.self
 
         presentWithoutNavigation(newTransactionController)
+
+        return newTransactionController
     }
 }

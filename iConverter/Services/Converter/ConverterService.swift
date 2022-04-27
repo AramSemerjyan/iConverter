@@ -38,7 +38,7 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
     }
 
     func convert(transaction: Transaction) async throws -> Transaction {
-        let allBalance = balanceDataStore.allBalancies.value
+        let allBalance = balanceDataStore.loadAllBalances()
         let balance = allBalance.first { $0.currency == transaction.fromCurrency }
 
         try validate(transaction, balance: balance)
