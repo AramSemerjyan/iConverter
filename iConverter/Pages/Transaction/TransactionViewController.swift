@@ -125,12 +125,12 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.amount)
             .withLatestFrom(viewModel.selectedToCurrency) { (amount: $0, to: $1) }
             .withLatestFrom(viewModel.selectedFromCurrency) { (amount: $0.amount, from: $1, to: $0.to) }
-            .subscribe(onNext: { [interactor] t in
+            .subscribe(onNext: { [interactor] transaction in
                 interactor?.makeTransaction(
                     .createWith(
-                        amount: t.amount.toDouble(),
-                        fromCurrency: t.from,
-                        toCurrencty: t.to
+                        amount: transaction.amount.toDouble(),
+                        fromCurrency: transaction.from,
+                        toCurrencty: transaction.to
                     )
                 )
             })

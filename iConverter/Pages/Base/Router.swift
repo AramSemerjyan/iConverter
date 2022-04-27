@@ -29,20 +29,6 @@ class Router {
         return nil
     }
 
-    func setAndPresentRootController(_ controller: UIViewController,
-                                     animation: UIView.AnimationOptions,
-                                     duration: TimeInterval) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = controller
-
-        UIView.transition(
-            with: appDelegate.window!,
-            duration: duration,
-            options: animation,
-            animations: nil
-        )
-    }
-
     func show(_ controller: UIViewController) {
         topViewController?.show(controller, sender: nil)
     }
