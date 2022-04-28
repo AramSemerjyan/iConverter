@@ -15,11 +15,12 @@ protocol BalanceDataStoreProtocol {
     func loadCurrentBalance() -> Balance?
     func loadOtherBalances() -> [Balance]
     func loadAllBalances() -> [Balance]
+    func loadForCurrency(_ currency: Currency) -> Balance
 }
 
 final class BalanceDataStore {
     // MARK: - service
-    let db: LocalDBProtocol
+    private let db: LocalDBProtocol
     
     // MARK: - inputs
     let update: PublishRelay<Void> = .init()
@@ -71,6 +72,10 @@ extension BalanceDataStore: BalanceDataStoreProtocol {
         }
 
         return balances
+    }
+
+    func loadForCurrency(_ currency: Currency) -> Balance {
+        getBalance(for: currency)
     }
 }
 

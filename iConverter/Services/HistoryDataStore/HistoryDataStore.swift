@@ -16,7 +16,7 @@ protocol HistoryDataStoreProtocol {
 
 final class HistoryDataStore {
     // MARK: - services
-    let localDB: LocalDBProtocol
+    private let localDB: LocalDBProtocol
     
     init(localDB: LocalDBProtocol) {
         self.localDB = localDB

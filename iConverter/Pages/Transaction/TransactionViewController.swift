@@ -12,12 +12,12 @@ import RxSwift
 class TransactionViewController: BaseViewController {
 
     // MARK: - view
-    var transactionView: TransactionView!
+    private var transactionView: TransactionView!
     
     // MARK: - view model
-    var viewModel: TransactionViewModel!
+    let viewModel: TransactionViewModel
 
-    private var interactor: TransactionInteractor!
+    private let interactor: TransactionInteractor
 
     init(
         viewModel: TransactionViewModel,
@@ -88,7 +88,7 @@ private extension TransactionViewController {
             .orEmpty
             .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [viewModel] amount in
-                viewModel?.amount.accept(amount)
+                viewModel.amount.accept(amount)
             })
             .disposed(by: rx.disposeBag)
         
@@ -97,7 +97,7 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.selectedToCurrency) { (amount: $0, to: $1) }
             .withLatestFrom(viewModel.selectedFromCurrency) { (amount: $0.amount, from: $1, to: $0.to) }
             .subscribe(onNext: { [interactor] t in
-                interactor?.makeTransaction(
+                interactor.makeTransaction(
                     .createWith(
                         amount: t.amount.toDouble(),
                         fromCurrency: t.from,

@@ -7,11 +7,4 @@
 
 import RxSwift
 
-class BaseInteractor {
-    
-    deinit {
-        print("********")
-        print("Interactor deinited")
-        print("********")
-    }
-}
+class BaseInteractor { }

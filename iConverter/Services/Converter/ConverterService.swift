@@ -15,10 +15,10 @@ protocol ConverterServiceProtocol {
 
 final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
     // MARK: - services
-    let convertAPIService: ConverterAPIServiceProtocol
-    let balanceDataStore: BalanceDataStoreProtocol
-    let feeService: FeeServiceProtocol
-    let historyService: HistoryDataStoreProtocol
+   private let convertAPIService: ConverterAPIServiceProtocol
+   private let balanceDataStore: BalanceDataStoreProtocol
+   private let feeService: FeeServiceProtocol
+   private let historyService: HistoryDataStoreProtocol
     
     // MARK: - validator
     let converterValidator: ConverterValidatorProtocol
@@ -38,8 +38,7 @@ final class ConverterService: ConverterServiceProtocol, HasDisposeBag {
     }
 
     func convert(transaction: Transaction) async throws -> Transaction {
-        let allBalance = balanceDataStore.loadAllBalances()
-        let balance = allBalance.first { $0.currency == transaction.fromCurrency }
+        let balance = balanceDataStore.loadForCurrency(transaction.fromCurrency)
 
         try validate(transaction, balance: balance)
 

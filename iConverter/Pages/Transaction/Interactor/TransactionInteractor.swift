@@ -13,7 +13,7 @@ final class TransactionInteractor: BaseInteractor {
     var presenter: TransactionPresenter!
 
     // MARK: - services
-    let converterService: ConverterServiceProtocol
+    private let converterService: ConverterServiceProtocol
 
     init(
         presenter: TransactionPresenter,

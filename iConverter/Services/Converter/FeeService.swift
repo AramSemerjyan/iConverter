@@ -16,7 +16,7 @@ protocol FeeServiceProtocol {
 
 final class FeeService: FeeServiceProtocol, HasDisposeBag {
     // MARK: - services
-    let historyService: HistoryDataStoreProtocol
+    private let historyService: HistoryDataStoreProtocol
     
     init(historyService: HistoryDataStoreProtocol) {
         self.historyService = historyService

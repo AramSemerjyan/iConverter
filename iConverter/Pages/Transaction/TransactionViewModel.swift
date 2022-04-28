@@ -9,10 +9,6 @@ import RxSwift
 import RxRelay
 
 class TransactionViewModel: BaseViewModel {
-    
-    // MARK: - services
-    let converterService: ConverterServiceProtocol
-    
     // MARK: - Inputs
     let amount: PublishRelay<String> = .init()
     
@@ -23,10 +19,4 @@ class TransactionViewModel: BaseViewModel {
     let onSuccess: PublishRelay<String> = .init()
     let startLoading: PublishRelay<Void> = .init()
     let stopLoading: PublishRelay<Void> = .init()
-
-    init(converterService: ConverterServiceProtocol) {
-        self.converterService = converterService
-        
-        super.init()
-    }
 }

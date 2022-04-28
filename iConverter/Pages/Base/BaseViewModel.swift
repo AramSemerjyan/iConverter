@@ -9,12 +9,6 @@ import RxRelay
 import NSObject_Rx
 
 class BaseViewModel: HasDisposeBag {
-    deinit {
-        print("********")
-        print("View Model deinited")
-        print("********")
-    }
-
     // MARK: - Outputs
     let onError: PublishRelay<String?> = .init()
 }

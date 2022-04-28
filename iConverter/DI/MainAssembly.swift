@@ -16,31 +16,12 @@ final class MainAssembly: Assembly {
         container.autoregister(MainInteractor.self, initializer: MainInteractor.init)
         container.autoregister(MainPresenter.self, initializer: MainPresenter.init)
         container.autoregister(MainViewModel.self, initializer: MainViewModel.init)
-        container.register(MainViewController.self) { r in
-            let controller = MainViewController.init(
-                viewModel: r ~> MainViewModel.self,
-                interactor: r ~> MainInteractor.self,
-                presenter: r ~> MainPresenter.self,
-                router: r ~> MainRouter.self
-            )
-            return controller
-        }
+        container.autoregister(MainViewController.self, initializer: MainViewController.init)
 
         // MARK: - Transactions
         container.autoregister(TransactionInteractor.self, initializer: TransactionInteractor.init)
         container.autoregister(TransactionPresenter.self, initializer: TransactionPresenter.init)
-        container.autoregister(
-            TransactionViewModel.self,
-            initializer: TransactionViewModel.init
-        )
-        container.register(TransactionViewController.self) { r in
-            let controller = TransactionViewController.init(
-                viewModel: r ~> TransactionViewModel.self,
-                interactor: r ~> TransactionInteractor.self,
-                presenter: r ~> TransactionPresenter.self
-            )
-            
-            return controller
-        }
+        container.autoregister(TransactionViewModel.self, initializer: TransactionViewModel.init)
+        container.autoregister(TransactionViewController.self, initializer: TransactionViewController.init)
     }
 }

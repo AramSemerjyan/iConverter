@@ -12,17 +12,13 @@ import RxOptional
 class MainViewController: BaseViewController {
 
     // MARK: - view
-    var mainView: MainView! {
-        didSet {
-            configureTableView()
-        }
-    }
+    private var mainView: MainView!
 
     // MARK: - View Model
-    var viewModel: MainViewModel!
+    let viewModel: MainViewModel
 
-    private var interactor: MainInteractor!
-    private var router: MainRouter!
+    private let interactor: MainInteractor
+    private let router: MainRouter
 
     init(
         viewModel: MainViewModel,
@@ -51,6 +47,8 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configureTableView()
 
         doBindings()
 
@@ -104,7 +102,7 @@ private extension MainViewController {
 
         viewModel.transactionUpdated
             .bind { [interactor] in
-                interactor?.loadData()
+                interactor.loadData()
             }
             .disposed(by: rx.disposeBag)
     }

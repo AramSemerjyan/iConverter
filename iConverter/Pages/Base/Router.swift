@@ -9,12 +9,6 @@ import UIKit
 
 class Router {
 
-    deinit {
-        print("********")
-        print("Router deinited")
-        print("********")
-    }
-
     private var topViewController: UIViewController? {
         let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
 

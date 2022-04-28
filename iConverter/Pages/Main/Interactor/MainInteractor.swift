@@ -8,8 +8,8 @@
 final class MainInteractor: BaseInteractor {
     var presenter: MainPresenter!
 
-    let historyDataStore: HistoryDataStoreProtocol
-    let balanceDataStore: BalanceDataStoreProtocol
+    private let historyDataStore: HistoryDataStoreProtocol
+    private let balanceDataStore: BalanceDataStoreProtocol
 
     init(
         historyDataStore: HistoryDataStoreProtocol,

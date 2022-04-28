@@ -12,12 +12,6 @@ import RxRelay
 import RxSwift
 
 class BaseViewController: UIViewController {
-
-    deinit {
-        print("********")
-        print("\(Self.name) deinited")
-        print("********")
-    }
     
     // MARK: - Inputs
     let startLoading: PublishRelay<Void> = .init()

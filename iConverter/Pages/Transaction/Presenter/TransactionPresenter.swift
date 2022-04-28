@@ -8,9 +8,9 @@
 final class TransactionPresenter: BasePresenter {
     weak var vc: TransactionViewController?
 
-    var viewModel: TransactionViewModel? { vc?.viewModel }
+    private var viewModel: TransactionViewModel? { vc?.viewModel }
 
-    var currencyOptions: [Currency] { viewModel?.currencyOptions.value ?? [] }
+    private var currencyOptions: [Currency] { viewModel?.currencyOptions.value ?? [] }
 
     @MainActor
     func show(error: String) {
