@@ -29,4 +29,7 @@ enum LocalizationKeys: String {
     case transactionTitle
     case submitButtonTitle
     case standardTransactionFeeDescription
+
+    // MARK: - errors
+    case somethingWentWrong
 }

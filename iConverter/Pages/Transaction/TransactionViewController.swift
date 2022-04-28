@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 
 class TransactionViewController: BaseViewController {
-    
     // MARK: - Outlets
     @IBOutlet weak var pageTitle: UILabel!
     @IBOutlet weak var fromAmountField: UITextField!
@@ -21,6 +20,20 @@ class TransactionViewController: BaseViewController {
     
     // MARK: - view model
     var viewModel: TransactionViewModel!
+
+    private var interactor: TransactionInteractor!
+
+    func makeDI(
+        viewModel: TransactionViewModel,
+        interactor: TransactionInteractor,
+        presenter: TransactionPresenter
+    ) {
+        self.viewModel = viewModel
+        self.interactor = interactor
+        presenter.vc = self
+
+        interactor.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +90,7 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.currencyOptions)
             .subscribe(onNext: { [weak self] options in
                 self?.showActionSheet(actions: options.map { $0.rawValue }, onSelect: { index in
-                    self?.viewModel.selectFromCurrency.accept(index)
+                    self?.interactor.updateFromCurrency(index)
                 })
             }).disposed(by: rx.disposeBag)
         
@@ -85,7 +98,8 @@ private extension TransactionViewController {
             .withLatestFrom(viewModel.currencyOptions)
             .subscribe(onNext: { [weak self] options in
                 self?.showActionSheet(actions: options.map { $0.rawValue }, onSelect: { index in
-                    self?.viewModel.selectToCurrency.accept(index)
+                    self?.interactor.updateToCurrency(index)
+
                 })
             }).disposed(by: rx.disposeBag)
         
@@ -102,25 +116,28 @@ private extension TransactionViewController {
         fromAmountField.rx.text
             .orEmpty
             .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
-            .bind(to: viewModel.amount)
+            .subscribe(onNext: { [viewModel] amount in
+                viewModel?.amount.accept(amount)
+            })
             .disposed(by: rx.disposeBag)
         
         submit.rx.tap
-            .bind(to: viewModel.convert)
+            .withLatestFrom(viewModel.amount)
+            .withLatestFrom(viewModel.selectedToCurrency) { (amount: $0, to: $1) }
+            .withLatestFrom(viewModel.selectedFromCurrency) { (amount: $0.amount, from: $1, to: $0.to) }
+            .subscribe(onNext: { [interactor] transaction in
+                interactor?.makeTransaction(
+                    .createWith(
+                        amount: transaction.amount.toDouble(),
+                        fromCurrency: transaction.from,
+                        toCurrencty: transaction.to
+                    )
+                )
+            })
             .disposed(by: rx.disposeBag)
     }
     
     func bindOutputs() {
-        viewModel.onError
-            .bind(to: errorLabel.rx.text)
-            .disposed(by: rx.disposeBag)
-        
-        viewModel.onSuccess
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] message in
-                self?.showAlert(title: iConverterLocalization.appName, message: message)
-            }).disposed(by: rx.disposeBag)
-        
         viewModel.startLoading
             .bind(to: startLoading)
             .disposed(by: rx.disposeBag)
@@ -128,5 +145,13 @@ private extension TransactionViewController {
         viewModel.stopLoading
             .bind(to: stopLoading)
             .disposed(by: rx.disposeBag)
+
+        viewModel.onSuccess.subscribe(onNext: { [weak self] message in
+            self?.showAlert(title: "Success", message: message)
+        }).disposed(by: rx.disposeBag)
+
+        viewModel.onError.subscribe(onNext: { [errorLabel] error in
+            errorLabel?.text = error
+        }).disposed(by: rx.disposeBag)
     }
 }

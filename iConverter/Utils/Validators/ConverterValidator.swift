@@ -6,38 +6,32 @@
 //
 
 protocol ConverterValidatorProtocol {
-    func validateEmptyAmount(amount: Double?) -> String?
-    func validateBalance(transactionAmount: Double?, balance: Double?) -> String?
-    func validateCurrencies(fromCurrency: Currency, toCurrency: Currency) -> String?
+    func validateEmptyAmount(amount: Double?) throws
+    func validateBalance(transactionAmount: Double?, balance: Double?) throws
+    func validateCurrencies(fromCurrency: Currency?, toCurrency: Currency?) throws
 }
 
 final class ConverterValidator: ConverterValidatorProtocol {
-    func validateEmptyAmount(amount: Double?) -> String? {
-        guard let amount = amount else { return iConverterLocalization.noEmptyAmount }
-        guard amount != 0.0 else { return iConverterLocalization.noEmptyAmount }
-        
-        return nil
+    func validateEmptyAmount(amount: Double?) throws {
+        guard let amount = amount else { throw iConverterError.Transaction.noEmptyAmount }
+        guard amount != 0.0 else { throw iConverterError.Transaction.noEmptyAmount }
     }
     
-    func validateBalance(transactionAmount: Double?, balance: Double?) -> String? {
+    func validateBalance(transactionAmount: Double?, balance: Double?) throws {
         guard let transactionAmount = transactionAmount, transactionAmount != 0.0 else {
-            return iConverterLocalization.noEmptyAmount
+            throw iConverterError.Transaction.noEmptyAmount
         }
         
         guard let balance = balance, balance != 0.0 else {
-            return iConverterLocalization.noFounds
+            throw iConverterError.Transaction.noFounds
         }
         
         guard transactionAmount < balance else {
-            return iConverterLocalization.noFounds
+            throw iConverterError.Transaction.noFounds
         }
-
-        return nil
     }
     
-    func validateCurrencies(fromCurrency: Currency, toCurrency: Currency) -> String? {
-        if fromCurrency == toCurrency { return iConverterLocalization.noEqualCurrency }
-        
-        return nil
+    func validateCurrencies(fromCurrency: Currency?, toCurrency: Currency?) throws {
+        if fromCurrency == toCurrency { throw iConverterError.Transaction.noEqualCurrency }
     }
 }

@@ -63,6 +63,20 @@ extension Transaction {
             fees: fees ?? self.fees
         )
     }
-}
 
-typealias TransactionState = SingleState<Transaction>
+    static func createWith(
+        amount: Double,
+        fromCurrency: Currency,
+        toCurrencty: Currency
+    ) -> Transaction {
+        .init(
+            original: amount,
+            priceWithFee: 0.0,
+            converted: nil,
+            createdDate: .init(),
+            fromCurrency: fromCurrency,
+            toCurrency: toCurrencty,
+            fees: []
+        )
+    }
+}
