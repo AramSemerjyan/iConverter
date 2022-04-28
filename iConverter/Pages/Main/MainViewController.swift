@@ -6,66 +6,87 @@
 //
 
 import UIKit
-import SwinjectAutoregistration
 import RxSwift
+import RxOptional
 
 class MainViewController: BaseViewController {
-    
-    // MARK: - Outlets
-    @IBOutlet weak var currentBalanceTitle: UILabel!
-    @IBOutlet weak var currentBalance: UILabel!
-    @IBOutlet weak var balancesContainer: BalancesContainer!
-    @IBOutlet weak var historyContainer: UIView!
-    @IBOutlet weak var historyTableVeiw: UITableView!
-    
-    // MARK: - View Model
-    var viewModel: MainViewModel!
 
+    // MARK: - view
+    private var mainView: MainView!
+
+    // MARK: - View Model
+    let viewModel: MainViewModel
+
+    private let interactor: MainInteractor
+    private let router: MainRouter
+
+    init(
+        viewModel: MainViewModel,
+        interactor: MainInteractor,
+        presenter: MainPresenter,
+        router: MainRouter
+    ) {
+        self.viewModel = viewModel
+        self.interactor = interactor
+        self.router = router
+
+        super.init(nibName: nil, bundle: nil)
+
+        presenter.vc = self
+        interactor.presenter = presenter
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        mainView = MainView()
+        view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        configureTableView()
+
         doBindings()
-    }
-    
-    override func setUpViews() {
-        super.setUpViews()
-        
-        setUpCurrentBalanceViews()
-        setUpHistoryContainer()
-        setUpTableView()
-    }
-    
-    @IBAction func addNewTransaction(_ sender: UIButton) {        
-        self.present(resolver ~> TransactionViewController.self, animated: true)
+
+        interactor.loadData()
     }
 }
 
 // MARK: - do bindings
 private extension MainViewController {
     func doBindings() {
-        viewModel.onSuccess
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] message in
-                self?.showAlert(title: iConverterLocalization.appName, message: message)
-            }).disposed(by: rx.disposeBag)
-        
         viewModel
             .currentBalance
+            .map { $0?.nameWithSymbol }
             .filterNil()
             .observe(on: MainScheduler.instance)
-            .bind(to: currentBalance.rx.text)
+            .subscribe(onNext: { [mainView] balance in
+                mainView?.setCurrentBalance(balance)
+            })
             .disposed(by: rx.disposeBag)
-        
+
+        mainView.addNewButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.router.openAddNewTransaction()
+                    .rx.transactionUpdated
+                    .bind(to: self.viewModel.transactionUpdated)
+                    .disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
+
         viewModel
             .otherBalances
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [balancesContainer] balances in
-                balancesContainer?.updateBalances(balances)
+            .subscribe(onNext: { [mainView] otherBalances in
+                mainView?.setUpOtherBalances(otherBalances)
             }).disposed(by: rx.disposeBag)
-        
+
         viewModel.transactionsHistory
             .observe(on: MainScheduler.instance)
-            .bind(to: historyTableVeiw.rx.items) { tv, row, transaction in
+            .bind(to: mainView.historyTableView.rx.items) { tv, row, transaction in
                 guard let cell = tv.dequeueReusableCell(
                     withIdentifier: HistoryItemCell.name,
                     for: .init(row: row, section: 0)) as? HistoryItemCell
@@ -78,24 +99,18 @@ private extension MainViewController {
 
                 return cell
             }.disposed(by: rx.disposeBag)
+
+        viewModel.transactionUpdated
+            .bind { [interactor] in
+                interactor.loadData()
+            }
+            .disposed(by: rx.disposeBag)
     }
 }
 
 // MARK: - set up views
 private extension MainViewController {
-    func setUpCurrentBalanceViews() {
-        currentBalanceTitle.textColor = .descriptionTextColor
-        currentBalance.textColor = .mainTextColor
-    }
-    
-    func setUpHistoryContainer() {
-        historyContainer.clipsToBounds = true
-        historyContainer.layer.cornerRadius = 20
-        historyContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-    }
-    
-    func setUpTableView() {
-        let nib = UINib(nibName: HistoryItemCell.name, bundle: nil)
-        historyTableVeiw.register(nib, forCellReuseIdentifier: HistoryItemCell.name)
+    func configureTableView() {
+        mainView.historyTableView.register(HistoryItemCell.self, forCellReuseIdentifier: HistoryItemCell.name)
     }
 }

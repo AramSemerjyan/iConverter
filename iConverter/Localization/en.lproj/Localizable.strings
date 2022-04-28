@@ -30,3 +30,8 @@
 "transactionTitle" = "New Transaction";
 "submitButtonTitle" = "Submit";
 "standardTransactionFeeDescription" = "Standard Transaction Commission";
+"fromLabelTitle" = "From:";
+"toLabelTitle" = "To:";
+
+// MARK: - Errors
+"somethingWentWrong" = "Something went wrong";

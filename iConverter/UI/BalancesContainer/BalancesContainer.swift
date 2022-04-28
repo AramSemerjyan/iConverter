@@ -5,57 +5,67 @@
 //  Created by Aram Semerjyan on 2/19/22.
 //
 
-import Foundation
 import UIKit
+import Stevia
 
 final class BalancesContainer: UIView {
-    // MARK: - outlets
-    @IBOutlet weak var stackConainer: UIStackView!
-    
+    let stackView = UIStackView()
+
+    convenience init() {
+        self.init(frame:CGRect.zero)
+
+        configure()
+    }
+
     // MARK: - update container
-    func updateBalances(_ balances: [Balance]) {
-        stackConainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
+    func configure(with balances: [Balance]) {
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
         balances.forEach { balance in
             if let item = getContainerItem(balance) {
-                stackConainer.addArrangedSubview(item)
+                stackView.addArrangedSubview(item)
             }
         }
     }
-    
-    // MARK: - init
-    required init?(coder decoder: NSCoder) {
-        super.init(coder: decoder)
+}
 
-        guard let view = loadViewFromNib() else { return }
-        view.frame = self.bounds
-        addSubview(view)
-        setUpViews()
+// MARK: - configure
+private extension BalancesContainer {
+    func configure() {
+        backgroundColor = .clear
+
+        configureSubviews()
+        configureLayout()
     }
 
-    func loadViewFromNib() -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: Self.name, bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    func configureSubviews() {
+        subviews {
+            stackView.style(stackViewStyle)
+        }
+    }
+
+    func configureLayout() {
+        layout {
+            0
+            |stackView|
+            0
+        }
     }
 }
 
-// MARK: - set up views
+// MARK: - styles
 private extension BalancesContainer {
-    func setUpViews() {
-        self.backgroundColor = .clear
+    func stackViewStyle(_ stackView: UIStackView) {
+        stackView.distribution = .fillEqually
     }
 }
 
 // MARK: - get items
 private extension BalancesContainer {
     func getContainerItem(_ balance: Balance) -> BalanceItem? {
-        guard let item = Bundle.main.loadNibNamed(
-            BalanceItem.name,
-            owner: nil,
-            options: nil)?.first as? BalanceItem else { return nil }
+        let item = BalanceItem()
         
-        item.configure(balance)
+        item.configure(with: balance)
         
         return item
     }

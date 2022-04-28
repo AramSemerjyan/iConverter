@@ -12,5 +12,6 @@ extension UIColor {
     static let descriptionTextColor = UIColor(named: "descriptionTextColor")
     static let appBackground = UIColor(named: "appBackground")
     static let errorColor = UIColor(named: "errorColor")
+    static let successColor = UIColor(named: "successColor")
     static let overlaySemiTransparent = UIColor(named: "overlaySemiTransparent")
 }

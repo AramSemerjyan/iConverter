@@ -10,28 +10,18 @@ import SwinjectAutoregistration
 
 final class MainAssembly: Assembly {
     func assemble(container: Container) {
-        
-        container.autoregister(
-            MainViewModel.self,
-            initializer: MainViewModel.init
-        )
-        
-        container.register(MainViewController.self) { r in
-            let controller = MainViewController.instantiate()
-            controller.viewModel = r ~> MainViewModel.self
-            
-            return controller
-        }
-        
-        container.autoregister(
-            TransactionViewModel.self,
-            initializer: TransactionViewModel.init
-        )
-        container.register(TransactionViewController.self) { r in
-            let controller = TransactionViewController.instantiate()
-            controller.viewModel = r ~> TransactionViewModel.self
-            
-            return controller
-        }
+
+        // MARK: - Home
+        container.autoregister(MainRouter.self, initializer: MainRouter.init).inObjectScope(.container)
+        container.autoregister(MainInteractor.self, initializer: MainInteractor.init)
+        container.autoregister(MainPresenter.self, initializer: MainPresenter.init)
+        container.autoregister(MainViewModel.self, initializer: MainViewModel.init)
+        container.autoregister(MainViewController.self, initializer: MainViewController.init)
+
+        // MARK: - Transactions
+        container.autoregister(TransactionInteractor.self, initializer: TransactionInteractor.init)
+        container.autoregister(TransactionPresenter.self, initializer: TransactionPresenter.init)
+        container.autoregister(TransactionViewModel.self, initializer: TransactionViewModel.init)
+        container.autoregister(TransactionViewController.self, initializer: TransactionViewController.init)
     }
 }

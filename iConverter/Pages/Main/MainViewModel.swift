@@ -7,45 +7,12 @@
 
 import Foundation
 import RxRelay
+import RxSwift
 
 final class MainViewModel: BaseViewModel {
-    // MARK: - Services
-    let balanceDataStore: BalanceDataStoreProtocol
-    let historyDataStore: HistoryDataStoreProtocol
-    
     // MARK: - Output
-    let onSuccess: PublishRelay<String> = .init()
-    let currentBalance: BehaviorRelay<String?> = .init(value: nil)
+    let currentBalance: BehaviorRelay<Balance?> = .init(value: nil)
     let otherBalances: BehaviorRelay<[Balance]> = .init(value: [])
     let transactionsHistory: BehaviorRelay<[Transaction]> = .init(value: [])
-    
-    init(
-        balanceDataStore: BalanceDataStoreProtocol,
-        historyDataStore: HistoryDataStoreProtocol
-    ) {
-        self.balanceDataStore = balanceDataStore
-        self.historyDataStore = historyDataStore
-        
-        super.init()
-        
-        doBindings()
-    }
-}
-
-// MARK: - Do bindings
-extension MainViewModel {
-    func doBindings() {
-        historyDataStore.history
-            .bind(to: transactionsHistory)
-            .disposed(by: disposeBag)
-        
-        balanceDataStore.currenBalance
-            .map { $0.nameWithSymbol }
-            .bind(to: currentBalance)
-            .disposed(by: disposeBag)
-        
-        balanceDataStore.otherBalances
-            .bind(to: otherBalances)
-            .disposed(by: disposeBag)
-    }
+    let transactionUpdated: PublishRelay<Void> = .init()
 }

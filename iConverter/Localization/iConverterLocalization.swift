@@ -84,4 +84,20 @@ final class iConverterLocalization {
         LocalizationKeys.standardTransactionFeeDescription.rawValue,
         comment: "Standard commission"
     )
+
+    static let fromLabelTitle = NSLocalizedString(
+        LocalizationKeys.fromLabelTitle.rawValue,
+        comment: "From label title"
+    )
+
+    static let toLabelTitle = NSLocalizedString(
+        LocalizationKeys.toLabelTitle.rawValue,
+        comment: "Standard commission"
+    )
+
+    // MARK: - errors
+    static let somethingWentWrong = NSLocalizedString(
+        LocalizationKeys.somethingWentWrong.rawValue,
+        comment: "Something went wrong"
+    )
 }

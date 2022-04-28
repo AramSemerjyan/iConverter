@@ -8,19 +8,15 @@
 import Foundation
 import UIKit
 import RxCocoa
-import RxOptional
 import RxRelay
-import RxRestClient
 import RxSwift
-import NSObject_Rx
 
 class BaseViewController: UIViewController {
     
     // MARK: - Inputs
-    let baseState: PublishRelay<BaseState> = .init()
     let startLoading: PublishRelay<Void> = .init()
     let stopLoading: PublishRelay<Void> = .init()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,33 +32,6 @@ class BaseViewController: UIViewController {
 // MARK: - Do bindings
 private extension BaseViewController {
     func doBindings() {
-        baseState.map(\.serviceState)
-            .filter { $0 == .offline }
-            .observe(on: MainScheduler.instance)
-            .subscribe { [weak self] _ in
-                self?.showAlert(
-                    title: iConverterLocalization.errorTitle,
-                    message: iConverterLocalization.noInternetConnection
-                )
-            }
-            .disposed(by: rx.disposeBag)
-
-        Observable.merge(
-            baseState.map(\.badRequest),
-            baseState.map(\.unexpectedError),
-            baseState.map(\.validationProblem),
-            baseState.map(\.forbidden)
-        )
-        .filterNil()
-        .observe(on: MainScheduler.instance)
-        .subscribe(onNext: { [weak self] error in
-            self?.showAlert(
-                title: iConverterLocalization.errorTitle,
-                message: iConverterLocalization.errorMessage
-            )
-        })
-        .disposed(by: rx.disposeBag)
-        
         startLoading
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in

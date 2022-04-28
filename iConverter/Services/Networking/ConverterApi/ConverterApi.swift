@@ -5,21 +5,35 @@
 //  Created by Aram Semerjyan on 2/18/22.
 //
 
-import RxRestClient
-import RxSwift
+import Foundation
 
-protocol ConverterApiProtocol {
-    func convert(with: Transaction) -> Observable<ConvertState>
+enum ConverterError: Error {
+    case urlIssue
+    case noData
 }
 
-final class ConverterApiService: BaseApiService { }
+extension ConverterError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .urlIssue: return "Incorrect URL provided"
+        case .noData: return "No data to transfer"
+        }
+    }
+}
 
-extension ConverterApiService: ConverterApiProtocol {
-    func convert(with request: Transaction) -> Observable<ConvertState> {
-        client.get(Endpoints.Converter.convert(
-            amount: request.original.toString(),
-            from: request.fromCurrency,
-            to: request.toCurrency
-        ))
+protocol ConverterAPIServiceProtocol {
+    func convert(transaction: Transaction) async throws -> ConvertResponse
+}
+
+actor ConverterAPIService: ConverterAPIServiceProtocol {
+
+    let baseService: BaseAPIService
+
+    init(baseService: BaseAPIService) {
+        self.baseService = baseService
+    }
+
+    func convert(transaction: Transaction) async throws -> ConvertResponse {
+        try await baseService.make(request: TransactionRequest.convert(transaction))
     }
 }
