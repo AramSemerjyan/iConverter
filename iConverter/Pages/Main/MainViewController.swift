@@ -21,14 +21,17 @@ class MainViewController: BaseViewController {
     // MARK: - View Model
     var viewModel: MainViewModel!
     private var interactor: MainInteractor!
+    private var router: MainRouter!
 
     func makeDI(
         viewModel: MainViewModel,
         interactor: MainInteractor,
-        presenter: MainPresenter
+        presenter: MainPresenter,
+        router: MainRouter
     ) {
         self.viewModel = viewModel
         self.interactor = interactor
+        self.router = router
         presenter.vc = self
         interactor.presenter = presenter
     }
@@ -38,7 +41,7 @@ class MainViewController: BaseViewController {
 
         doBindings()
 
-        interactor.loadAndObserveData()
+        interactor.loadData()
     }
     
     override func setUpViews() {
@@ -50,7 +53,10 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func addNewTransaction(_ sender: UIButton) {
-        interactor.handleAddNewTransactionTap()
+        router.openAddNewTransaction()
+            .rx.transactionUpdated
+            .bind(to: viewModel.transactionUpdated)
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -59,6 +65,7 @@ private extension MainViewController {
     func doBindings() {
         viewModel
             .currentBalance
+            .map { $0?.nameWithSymbol }
             .filterNil()
             .observe(on: MainScheduler.instance)
             .bind(to: currentBalance.rx.text)
@@ -86,6 +93,12 @@ private extension MainViewController {
 
                 return cell
             }.disposed(by: rx.disposeBag)
+
+        viewModel.transactionUpdated
+            .bind { [interactor] in
+                interactor?.loadData()
+            }
+            .disposed(by: rx.disposeBag)
     }
 }
 

@@ -10,7 +10,7 @@ final class TransactionPresenter: BasePresenter {
 
     var viewModel: TransactionViewModel? { vc?.viewModel }
 
-    var currencyOptions: [Currency] { viewModel?.currencyOptionsUpdated ?? [] }
+    var currencyOptions: [Currency] { viewModel?.currencyOptions.value ?? [] }
 
     @MainActor
     func show(error: String) {
